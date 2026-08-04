@@ -1,0 +1,532 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AirSense - Monitoreo Ambiental</title>
+  <link rel="icon" href="{% static 'src/FaviconAirSense.png' %}" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header>
+    <a href="{% url 'Home' %}" class="logo">
+      <img src="{% static 'src/Logos/LogoAirSense.png' %}" alt="AirSense" class="logo-img"/>
+      <span class="logo-text">Air<span>Sense</span></span>
+    </a>
+    <nav>
+      <a href="{% url 'Home' %}" class="nav-link {% if request.resolver_match.url_name == 'Home' %}active{% endif %}">Home</a>
+      <a href="{% url 'dashboard:home' %}" class="nav-link {% if request.resolver_match.namespace == 'dashboard' %}active{% endif %}">Dashboard</a>
+      <a href="{% url 'documentacion' %}" class="nav-link {% if request.resolver_match.url_name == 'documentacion' %}active{% endif %}">Documentación</a>
+    </nav>
+    <a href="{% url 'dashboard:home' %}" class="btn-live">
+      <span class="live-dot"></span>
+      Ver en vivo
+    </a>
+  </header>
+
+  <main>
+
+    <!-- ── CAROUSEL ── -->
+    <div id="carouselAirSense" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselAirSense" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#carouselAirSense" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#carouselAirSense" data-bs-slide-to="2"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{% static 'src/Banners/banner1.png' %}" class="d-block w-100" alt="Banner 1"/>
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'src/Banners/banner2.png' %}" class="d-block w-100" alt="Banner 2"/>
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'src/Banners/banner3.png' %}" class="d-block w-100" alt="Banner 3"/>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselAirSense" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselAirSense" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+
+<section class="home-section hero-section">
+  <div class="home-container hero-inner">
+
+<div class="hero-text">
+  <span class="section-eyebrow">Monitoreo Ambiental Inteligente · Arduino</span>
+
+  <h1 class="hero-title">
+    Mejorando la calidad de vida mediante el
+    <span>monitoreo ambiental</span>
+  </h1>
+
+  <p class="hero-desc">
+    AirSense analiza temperatura, humedad y ruido ambiental para generar métricas,
+    recomendaciones y alertas en tiempo real.
+  </p>
+
+  <div class="hero-stat-inline">
+    <span class="hero-stat-num">72.7%</span>
+    <span class="hero-stat-text">
+      de las mediciones de ruido estuvieron fuera del rango saludable
+    </span>
+  </div>
+
+  <div class="hero-actions">
+    <a href="{% url 'dashboard:home' %}" class="btn-cta">
+      <span class="live-dot"></span>
+      Ver Dashboard en vivo
+    </a>
+
+    <a href="{% url 'documentacion' %}" class="btn-ghost-home">
+      Ver documentación
+    </a>
+  </div>
+</div>
+
+<div class="hero-visual">
+
+  <div class="hero-device-card">
+
+    <img
+      src="{% static 'src/Fotos/AirSenseHero.png' %}"
+      alt="Dispositivo AirSense"
+      class="hero-device">
+
+  </div>
+
+</div>
+
+  </div>
+</section>
+
+
+    <!-- ── EL PROBLEMA ── -->
+    <section class="home-section problem-section">
+      <div class="home-container">
+        <span class="section-eyebrow">¿Por qué AirSense?</span>
+        <h2 class="section-title">No podemos mejorar<br><span>lo que no medimos</span></h2>
+        <p class="section-desc">Estudiantes y docentes pasan gran parte del día en aulas donde la temperatura, la humedad y el ruido afectan el bienestar y el rendimiento académico. Sin embargo, estas condiciones rara vez son monitoreadas.</p>
+        <div class="stats-row">
+          <div class="stat-block stat-block--danger">
+            <span class="stat-num">72.7%</span>
+            <span class="stat-label">de mediciones de ruido fuera del rango saludable</span>
+          </div>
+          <div class="stat-block stat-block--mid">
+            <span class="stat-num">54.5%</span>
+            <span class="stat-label">de mediciones de temperatura por encima del límite recomendado</span>
+          </div>
+          <div class="stat-block">
+            <span class="stat-num">0</span>
+            <span class="stat-label">sistemas de monitoreo ambiental permanentes en la institución antes de AirSense</span>
+          </div>
+        </div>
+        <blockquote class="home-quote">
+          "Muchas veces los problemas están frente a nosotros y no los vemos porque no tenemos las herramientas para medirlos."
+        </blockquote>
+      </div>
+    </section>
+
+ <!-- ── CÓMO FUNCIONA ── -->
+<section class="home-section how-section">
+  <div class="home-container">
+
+    <span class="section-eyebrow">Tecnología</span>
+
+    <h2 class="section-title">Cómo funciona</h2>
+
+    <p class="section-desc">
+      AirSense monitorea continuamente las condiciones ambientales y transforma los datos en información útil.
+    </p>
+
+    <div class="steps-grid">
+
+      <!-- PASO 1 -->
+      <div class="step-card">
+
+        <div class="step-num">01</div>
+
+        <img
+          src="{% static 'src/Fotos/Dispositivo.png' %}"
+          alt="Arduino leyendo sensores"
+          class="step-photo"
+        >
+
+        <h3>Arduino mide</h3>
+
+        <p>
+          El DHT11 mide temperatura y humedad. El KY-038 captura
+          el nivel de ruido ambiental en decibeles cada 2 segundos.
+        </p>
+
+      </div>
+
+      <div class="step-connector">→</div>
+
+      <!-- PASO 2 -->
+      <div class="step-card">
+
+        <div class="step-num">02</div>
+
+        <img
+          src="{% static 'src/Fotos/JS.png' %}"
+          alt="Comunicación serial"
+          class="step-photo"
+        >
+
+        <h3>Los datos viajan</h3>
+
+        <p>
+          Los datos se transmiten por comunicación serial USB a la
+          computadora en formato JSON, en tiempo real y sin interrupciones.
+        </p>
+
+      </div>
+
+      <div class="step-connector">→</div>
+
+      <!-- PASO 3 -->
+      <div class="step-card">
+
+        <div class="step-num">03</div>
+
+        <img
+          src="{% static 'src/Fotos/DashboardLive.jpg' %}"
+          alt="Dashboard AirSense"
+          class="step-photo"
+        >
+
+        <h3>Dashboard analiza</h3>
+
+        <p>
+          El sistema visualiza métricas, detecta valores fuera de rango
+          y genera alertas automáticas con recomendaciones según
+          estándares OMS.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+    <!-- ── RESULTADOS ── -->
+    <section class="home-section results-section">
+      <div class="home-container">
+        <span class="section-eyebrow">Datos reales · E.E.S.T N°1 2026</span>
+        <h2 class="section-title">Lo que revelaron<br><span>las mediciones</span></h2>
+        <p class="section-desc">Mediciones realizadas en 3 espacios de la institución durante el primer semestre de 2026.</p>
+
+        <div class="results-grid">
+          <div class="result-card result-card--alert">
+            <div class="result-location">🧑‍🏫 Aula del curso</div>
+            <div class="result-rows">
+              <div class="result-row">
+                <span class="result-date">12/05</span>
+                <span class="result-values">29.3°C · 45% · 68dB</span>
+                <span class="result-badge result-badge--alert">ALERTA</span>
+              </div>
+              <div class="result-row">
+                <span class="result-date">13/05</span>
+                <span class="result-values">27.8°C · 48% · 62dB</span>
+                <span class="result-badge result-badge--alert">ALERTA</span>
+              </div>
+              <div class="result-row">
+                <span class="result-date">14/05</span>
+                <span class="result-values">25.1°C · 52% · 57dB</span>
+                <span class="result-badge result-badge--warn">LEVE</span>
+              </div>
+              <div class="result-row">
+                <span class="result-date">19/05</span>
+                <span class="result-values">30.2°C · 43% · 71dB</span>
+                <span class="result-badge result-badge--alert">ALERTA</span>
+              </div>
+              <div class="result-row">
+                <span class="result-date">20/05</span>
+                <span class="result-values">24.9°C · 56% · 53dB</span>
+                <span class="result-badge result-badge--ok">OK</span>
+              </div>
+            </div>
+          </div>
+          <div class="result-card result-card--alert">
+            <div class="result-location">🏫 Patio en Recreo</div>
+            <div class="result-rows">
+              <div class="result-row">
+                <span class="result-date">12/05</span>
+                <span class="result-values">31.5°C · 38% · 75dB</span>
+                <span class="result-badge result-badge--alert">ALERTA</span>
+              </div>
+              <div class="result-row">
+                <span class="result-date">14/05</span>
+                <span class="result-values">26.8°C · 42% · 70dB</span>
+                <span class="result-badge result-badge--alert">ALERTA</span>
+              </div>
+              <div class="result-row">
+                <span class="result-date">20/05</span>
+                <span class="result-values">25.0°C · 55% · 68dB</span>
+                <span class="result-badge result-badge--alert">ALERTA</span>
+              </div>
+            </div>
+          </div>
+          <div class="result-card result-card--ok">
+            <div class="result-location">💻 Laboratorio</div>
+            <div class="result-rows">
+              <div class="result-row">
+                <span class="result-date">13/05</span>
+                <span class="result-values">22.3°C · 50% · 48dB</span>
+                <span class="result-badge result-badge--ok">OK</span>
+              </div>
+              <div class="result-row">
+                <span class="result-date">19/05</span>
+                <span class="result-values">23.1°C · 52% · 51dB</span>
+                <span class="result-badge result-badge--ok">OK</span>
+              </div>
+              <div class="result-row">
+                <span class="result-date">20/05</span>
+                <span class="result-values">21.8°C · 49% · 45dB</span>
+                <span class="result-badge result-badge--ok">OK</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="param-summary">
+          <div class="param-bar">
+            <div class="param-name">🌡️ Temperatura</div>
+            <div class="param-track"><div class="param-fill param-fill--alert" style="width:54.5%"></div></div>
+            <div class="param-pct">54.5% fuera de rango</div>
+          </div>
+          <div class="param-bar">
+            <div class="param-name">💧 Humedad</div>
+            <div class="param-track"><div class="param-fill param-fill--ok" style="width:9.1%"></div></div>
+            <div class="param-pct">9.1% fuera de rango</div>
+          </div>
+          <div class="param-bar">
+            <div class="param-name">🔊 Ruido</div>
+            <div class="param-track"><div class="param-fill param-fill--danger" style="width:72.7%"></div></div>
+            <div class="param-pct">72.7% fuera de rango</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- ── HARDWARE ── -->
+<section class="home-section hardware-section">
+  <div class="home-container">
+    <span class="section-eyebrow">Open Hardware</span>
+    <h2 class="section-title">Componentes del sistema</h2>
+
+    <div class="hw-grid">
+      <div class="hw-card hw-card-featured">
+
+  <img
+    src="{% static 'src/Fotos/Dispositivo.png' %}"
+    alt="Dispositivo AirSense"
+    class="hw-img hw-img-featured"
+  >
+
+  <div class="hw-tag">AirSense</div>
+
+  <h3>Dispositivo Completo</h3>
+
+  <p>
+    Sistema de monitoreo ambiental desarrollado para medir temperatura,
+    humedad y ruido en tiempo real. Integra sensores, visualización local
+    y dashboard web para generar métricas y recomendaciones.
+  </p>
+
+</div>
+
+      <!-- Arduino -->
+      <div class="hw-card">
+        <img
+          src="{% static 'src/Fotos/Arduino.png' %}"
+          alt="Arduino UNO"
+          class="hw-img"
+        >
+        <div class="hw-tag">Arduino UNO</div>
+        <h3>Microcontrolador</h3>
+        <p>
+          Cerebro del sistema. Procesa las lecturas de los sensores y
+          gestiona la comunicación serial y las alertas visuales.
+        </p>
+      </div>
+
+      <!-- DHT11 -->
+      <div class="hw-card">
+        <img
+          src="{% static 'src/Fotos/DHT.png' %}"
+          alt="DHT11"
+          class="hw-img"
+        >
+        <div class="hw-tag">DHT11</div>
+        <h3>Temperatura y Humedad</h3>
+        <p>
+          Precisión ±0.5°C y ±2%. Mide las condiciones térmicas del
+          ambiente cada 2 segundos en tiempo real.
+        </p>
+      </div>
+
+      <!-- KY-038 -->
+      <div class="hw-card">
+        <img
+          src="{% static 'src/Fotos/KY.png' %}"
+          alt="KY-038"
+          class="hw-img"
+        >
+        <div class="hw-tag">KY-038</div>
+        <h3>Sensor de Sonido</h3>
+        <p>
+          Micrófono analógico. Captura el nivel de ruido ambiental
+          estimado en dB mediante calibración matemática.
+        </p>
+      </div>
+
+      <!-- LCD -->
+      <div class="hw-card">
+        <img
+          src="{% static 'src/Fotos/LCD.png' %}"
+          alt="LCD 16x2"
+          class="hw-img"
+        >
+        <div class="hw-tag">LCD 16x2</div>
+        <h3>Display Local</h3>
+        <p>
+          Con módulo I2C. Muestra temperatura, humedad y ruido
+          directamente en el dispositivo sin necesidad de computadora.
+        </p>
+      </div>
+
+      <!-- LED RGB -->
+      <div class="hw-card">
+        <img
+          src="{% static 'src/Fotos/LED.png' %}"
+          alt="LED RGB"
+          class="hw-img"
+        >
+        <div class="hw-tag">LED RGB</div>
+        <h3>Indicador Visual</h3>
+        <p>
+          Verde = saludable, amarillo = advertencia, rojo = alerta.
+          Retroalimentación inmediata del estado ambiental.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    <!-- ══ SOBRE EL PROYECTO ══ -->
+    <section class="home-section about-section">
+      <div class="home-container about-inner">
+        <div class="about-text">
+          <span class="section-eyebrow">Sobre el proyecto</span>
+          <h2 class="section-title">Ingeniería y Tecnología<br><span>en acción</span></h2>
+          <p>AirSense es un proyecto de la categoría <strong>Ingeniería y Tecnología — Categoría B</strong> (trabajos institucionales) presentado en la Feria de Educación, Arte, Ciencias y Tecnología (ACTE) 2026 de la Provincia de Buenos Aires.</p>
+          <p>El proyecto surge de una pregunta investigable: ¿las condiciones ambientales de los espacios de nuestra escuela son saludables? Para responderla, el equipo desarrolló un sistema de monitoreo completo que combina hardware Arduino con una plataforma web de visualización en tiempo real.</p>
+          <p>La Carpeta de Campo registra todo el proceso de investigación, desde las hipótesis iniciales hasta los resultados obtenidos, siguiendo los lineamientos curriculares de la DGCyE Buenos Aires.</p>
+        </div>
+        <div class="about-data">
+          <div class="about-data-card">
+            <div class="about-data-row">
+              <span class="adr-label">Institución</span>
+              <span class="adr-value">E.E.S.T N°1</span>
+            </div>
+            <div class="about-data-row">
+              <span class="adr-label">Curso</span>
+              <span class="adr-value">7°1</span>
+            </div>
+            <div class="about-data-row">
+              <span class="adr-label">Área</span>
+              <span class="adr-value">Ingeniería y Tecnología B</span>
+            </div>
+            <div class="about-data-row">
+              <span class="adr-label">Instancia</span>
+              <span class="adr-value">Feria ACTE 2026</span>
+            </div>
+            <div class="about-data-row">
+              <span class="adr-label">Docentes asesores</span>
+              <span class="adr-value">Gareis Pablo, Lautaro Aragon, Marcos Correia.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── EQUIPO ── -->
+    <section class="home-section team-section">
+      <div class="home-container">
+        <span class="section-eyebrow">Feria ACTE 2026 · E.E.S.T N°1 · 7°1</span>
+        <h2 class="section-title">El equipo de AirSense</h2>
+        <p class="section-desc">Estudiantes de la Escuela de Educación Secundaria Técnica N°1</p>
+        <div class="team-grid">
+          <div class="team-card">
+          <div class="team-avatar">
+        <img src="{% static 'src/Fotos/Martin.jpeg' %}" alt=">Martín Clemente">
+            </div>
+            <div class="team-name">Martín Clemente</div>
+            <div class="team-role">Desarrollo Web</div>
+          </div>
+          <div class="team-card">
+          <div class="team-avatar">
+        <img src="{% static 'src/Fotos/Gusti.png' %}" alt="Gustavo Estévez">
+            </div>
+            <div class="team-name">Gustavo Estévez</div>
+            <div class="team-role">Diseño del Dispositivo</div>
+          </div>
+          <div class="team-card">
+                      <div class="team-avatar">
+        <img src="{% static 'src/Fotos/Benja.jpeg' %}" alt="Benjamín Novel">
+            </div>
+            <div class="team-name">Benjamín Novel</div>
+            <div class="team-role">Documentación Técnica</div>
+          </div>
+          <div class="team-card">
+                      <div class="team-avatar">
+        <img src="{% static 'src/Fotos/Nico.jpg' %}" alt="Nicolás Gutiérrez">
+            </div>
+            <div class="team-name">Nicolás Gutiérrez</div>
+            <div class="team-role">Presentación del Stand</div>
+          </div>
+        </div>
+        <p class="team-tutor">Docentes orientadores: <strong>Gareis Pablo, Lautaro Aragon, Marcos Correia.</strong></p>
+      </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer class="home-footer">
+      <div class="home-container footer-inner">
+        <div class="footer-brand">
+          <a href="{% url 'Home' %}" class="logo">
+            <img src="{% static 'src/Logos/LogoAirSense.png' %}" alt="AirSense" class="logo-img" style="height:48px;"/>
+            <span class="logo-text">Air<span>Sense</span></span>
+          </a>
+          <p>Sistema de monitoreo ambiental con Arduino.<br>Proyecto de Feria ACTE 2026 · E.E.S.T. N°1</p>
+        </div>
+        <div class="footer-links">
+          <a href="{% url 'Home' %}">Home</a>
+          <a href="{% url 'dashboard:home' %}">Dashboard</a>
+          <a href="{% url 'documentacion' %}">Documentación</a>
+        </div>
+        <div class="footer-meta">
+          <p>Área: Informática · Nivel Superior Secundario Técnico</p>
+          <p>© 2026 AirSense · Todos los derechos reservados</p>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

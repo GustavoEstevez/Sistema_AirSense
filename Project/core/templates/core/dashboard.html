@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AirSense - Dashboard</title>
+  <link rel="icon" href="{% static 'src/FaviconAirSense.png' %}" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+  <link rel="stylesheet" href="{% static 'core/css/dashboard.css' %}"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+  <script src="{% static 'core/js/script.js' %}" defer></script>
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header>
+    <a href="{% url 'Home' %}" class="logo">
+      <img src="{% static 'src/Logos/LogoAirSense.png' %}" alt="AirSense" class="logo-img"/>
+      <span class="logo-text">Air<span>Sense</span></span>
+    </a>
+    <nav>
+      <a href="{% url 'Home' %}" class="nav-link">Home</a>
+      <a href="{% url 'dashboard:home' %}" class="nav-link active">Dashboard</a>
+      <a href="{% url 'documentacion' %}" class="nav-link">Documentación</a>
+    </nav>
+    <div class="conn-status" id="connStatus" title="Estado de conexión">
+      <span class="dot"></span>
+      <span class="conn-label">Conectando…</span>
+    </div>
+  </header>
+
+  <main style="padding-top: 85px;">
+
+    <!-- ── MÉTRICAS EN VIVO ── -->
+    <section id="dashboard" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Dashboard en Vivo</h2>
+          <p>Lecturas en tiempo real de la estación AirSense, actualizadas cada 2 segundos.</p>
+        </div>
+
+        <div class="metrics-grid">
+          <article class="card metric-card" data-metric="temp">
+            <div class="metric-head">
+              <div class="metric-icon icon-temp" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+              </div>
+              <div>
+                <h3 class="metric-label">Temperatura</h3>
+                <p class="metric-sub">Sensor DHT11</p>
+              </div>
+            </div>
+            <div class="metric-body">
+              <span class="metric-value" id="tempValue">--</span>
+              <span class="metric-unit">°C</span>
+            </div>
+            <div class="status-pill" id="tempStatus" data-state="normal">Normal</div>
+          </article>
+
+          <article class="card metric-card" data-metric="hum">
+            <div class="metric-head">
+              <div class="metric-icon icon-hum" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5s6 7 6 11a6 6 0 1 1-12 0c0-4 6-11 6-11z"/></svg>
+              </div>
+              <div>
+                <h3 class="metric-label">Humedad</h3>
+                <p class="metric-sub">Sensor DHT11</p>
+              </div>
+            </div>
+            <div class="metric-body">
+              <span class="metric-value" id="humValue">--</span>
+              <span class="metric-unit">%</span>
+            </div>
+            <div class="status-pill" id="humStatus" data-state="normal">Óptima</div>
+          </article>
+
+          <article class="card metric-card" data-metric="noise">
+            <div class="metric-head">
+              <div class="metric-icon icon-noise" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+              </div>
+              <div>
+                <h3 class="metric-label">Nivel de Ruido</h3>
+                <p class="metric-sub">Sensor KY-038</p>
+              </div>
+            </div>
+            <div class="metric-body">
+              <span class="metric-value" id="noiseValue">--</span>
+              <span class="metric-unit">dB</span>
+            </div>
+            <div class="status-pill" id="noiseStatus" data-state="normal">Ruido Bajo</div>
+          </article>
+
+          <article class="card status-card" id="envCard" data-state="healthy">
+            <div class="status-icon" aria-hidden="true">
+              <svg id="envIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <h3 class="status-title" id="envTitle">Ambiente Saludable</h3>
+            <p class="status-desc" id="envDesc">Todas las lecturas están dentro de los rangos óptimos.</p>
+            <span class="status-badge" id="envBadge">Saludable</span>
+          </article>
+        </div>
+
+        <article class="card recs-card">
+          <div class="recs-head">
+            <div class="recs-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            </div>
+            <div>
+              <h3>Recomendaciones</h3>
+              <p>Sugerencias dinámicas según las últimas lecturas de los sensores.</p>
+            </div>
+          </div>
+          <ul class="recs-list" id="recsList">
+            <li class="rec rec-ok">Esperando la primera lectura de la estación…</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── GRÁFICOS ── -->
+    <section id="charts" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <h2>Historial</h2>
+          <p>Tendencias recientes de las variables monitoreadas.</p>
+        </div>
+        <div class="charts-grid">
+          <article class="card chart-card">
+            <h3>Temperatura</h3>
+            <div class="chart-wrap"><canvas id="tempChart"></canvas></div>
+          </article>
+          <article class="card chart-card">
+            <h3>Humedad</h3>
+            <div class="chart-wrap"><canvas id="humChart"></canvas></div>
+          </article>
+          <article class="card chart-card">
+            <h3>Ruido</h3>
+            <div class="chart-wrap"><canvas id="noiseChart"></canvas></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
