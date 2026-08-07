@@ -3,7 +3,6 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "gunicorn Project.wsgi --log-file -",
-    "healthcheckPath": "/"
+    "startCommand": "cd Project && gunicorn Project.wsgi --log-file -"
   }
 }
