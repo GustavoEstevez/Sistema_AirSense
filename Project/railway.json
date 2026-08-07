@@ -1,5 +1,5 @@
 {
   "deploy": {
-    "startCommand": "bash -c 'cd /app && gunicorn --pythonpath /app Project.wsgi:application --bind 0.0.0.0:$PORT'"
+    "startCommand": "bash -c 'cd /app && python manage.py collectstatic --noinput && gunicorn --pythonpath /app Project.wsgi:application --bind 0.0.0.0:$PORT'"
   }
 }
