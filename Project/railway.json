@@ -3,6 +3,6 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "cd Project && gunicorn Project.wsgi --log-file -"
+    "startCommand": "bash -c "cd /app && gunicorn --pythonpath /app Project.wsgi:application --bind 0.0.0.0:$PORT""
   }
 }
