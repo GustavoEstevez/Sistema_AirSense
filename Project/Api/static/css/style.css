@@ -24,6 +24,39 @@ body {
   min-height: 100vh;
 }
 
+body.page-ai {
+  background: var(--c-ice);
+}
+
+body.page-ai .problem-section,
+body.page-ai .how-section,
+body.page-ai .results-section,
+body.page-ai .hardware-section,
+body.page-ai .team-section {
+  background: var(--c-ice);
+}
+
+body.page-ai .problem-section .section-title { color: var(--c-navy); }
+body.page-ai .problem-section .section-desc  { color: var(--c-mist); }
+
+body.page-ai .hero-section {
+  background: var(--c-ice);
+}
+
+body.page-ai .hero-title { color: var(--c-navy); }
+body.page-ai .hero-title span { color: var(--c-teal); }
+
+body.page-ai .hero-text .section-eyebrow {
+  background: rgba(8, 131, 149, 0.1);
+  border-color: rgba(8, 131, 149, 0.25);
+  color: var(--c-teal);
+}
+
+body.page-ai .hero-stat-inline {
+  background: rgba(8, 131, 149, 0.06);
+  border-color: rgba(8, 131, 149, 0.15);
+}
+
 /* ── HEADER ──────────────────────────────────────────────────────
    Barra fija en la parte superior.
    overflow: hidden evita que el logo de 85px desborde visualmente.
@@ -61,9 +94,13 @@ header::after {
   background: var(--c-ice);
 }
 
+.carousel-ai .carousel-item {
+  transition: transform 1.4s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
 .carousel-ai .carousel-item img {
   height: clamp(200px, 24vw, 420px);
-  object-fit: cover;
+  object-fit: contain;
 }
 
 /* ── LOGO ── */
@@ -89,6 +126,23 @@ header::after {
 
 .logo-text span {
   color: var(--c-teal);
+}
+
+.logo-brand {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.1;
+}
+
+.logo-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--c-mist);
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+  white-space: nowrap;
 }
 
 /* ── NAVEGACIÓN ── */

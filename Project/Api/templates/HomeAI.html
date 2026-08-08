@@ -10,13 +10,16 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
 </head>
-<body>
+<body class="page-ai">
 
   <!-- ── HEADER ── -->
   <header>
     <a href="{% url 'HomeAI' %}" class="logo">
       <img src="{% static 'src/Logos/LogoAirSense.png' %}" alt="AirSense" class="logo-img"/>
-      <span class="logo-text">Air<span>Sense</span></span>
+      <span class="logo-brand">
+        <span class="logo-text">Air<span>Sense</span></span>
+        <span class="logo-sub">Monitoreo ambiental inteligente.</span>
+      </span>
     </a>
     <nav>
       <a href="{% url 'HomeAI' %}" class="nav-link {% if request.resolver_match.url_name == 'HomeAI' %}active{% endif %}"><span class="nav-badge">Nuevo</span><span class="nav-badge-text">AirSense AI</span></a>
@@ -33,11 +36,11 @@
   <main>
 
     <!-- ── CAROUSEL ── -->
-    <div id="carouselAirSense" class="carousel slide carousel-fade carousel-ai" data-bs-ride="carousel" data-bs-interval="4000">
+    <div id="carouselAirSenseAI" class="carousel slide carousel-ai" data-bs-ride="carousel" data-bs-interval="4000">
       <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselAirSense" data-bs-slide-to="0" class="active"></button>
-        <button type="button" data-bs-target="#carouselAirSense" data-bs-slide-to="1"></button>
-        <button type="button" data-bs-target="#carouselAirSense" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#carouselAirSenseAI" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#carouselAirSenseAI" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#carouselAirSenseAI" data-bs-slide-to="2"></button>
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -50,10 +53,10 @@
           <img src="{% static 'src/Banners/BannerAI3.png' %}" class="d-block w-100" alt="Banner AI 3"/>
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselAirSense" data-bs-slide="prev">
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselAirSenseAI" data-bs-slide="prev">
         <span class="carousel-control-prev-icon"></span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselAirSense" data-bs-slide="next">
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselAirSenseAI" data-bs-slide="next">
         <span class="carousel-control-next-icon"></span>
       </button>
     </div>
@@ -511,7 +514,7 @@
             <img src="{% static 'src/Logos/LogoAirSense.png' %}" alt="AirSense" class="logo-img" style="height:48px;"/>
             <span class="logo-text">Air<span>Sense</span></span>
           </a>
-          <p>Sistema de monitoreo ambiental con Arduino.<br>Proyecto de Feria ACTE 2026 · E.E.S.T. N°1</p>
+          <p>Monitoreo ambiental inteligente.<br>Proyecto de Feria ACTE 2026 · E.E.S.T. N°1</p>
         </div>
         <div class="footer-links">
           <a href="{% url 'HomeAI' %}" class="footer-link-ai"><span class="nav-badge">Nuevo</span><span class="nav-badge-text">AirSense AI</span></a>
@@ -531,7 +534,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      var carouselEl = document.getElementById('carouselAirSense');
+      var carouselEl = document.getElementById('carouselAirSenseAI');
       if (carouselEl) {
         new bootstrap.Carousel(carouselEl, { interval: 4000, ride: true, wrap: true });
       }
