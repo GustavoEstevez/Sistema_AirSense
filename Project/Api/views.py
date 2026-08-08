@@ -3,6 +3,9 @@ from django.shortcuts import render, redirect
 def Home(request):
     return render(request, 'Home.html')
 
+def HomeAI(request):
+    return render(request, 'HomeAI.html')
+
 def dashboard(request):
     return redirect('dashboard:home')
 

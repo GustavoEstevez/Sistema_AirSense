@@ -51,6 +51,21 @@ header::after {
   opacity: 0.5;
 }
 
+/* ── CAROUSEL (FADE SMOOTH) ── */
+.carousel-fade .carousel-item {
+  transition: opacity 1.2s ease;
+}
+
+/* ── CAROUSEL AIRSENSE AI ── */
+.carousel-ai {
+  background: var(--c-ice);
+}
+
+.carousel-ai .carousel-item img {
+  height: clamp(200px, 24vw, 420px);
+  object-fit: cover;
+}
+
 /* ── LOGO ── */
 .logo {
   display: flex;
@@ -85,7 +100,8 @@ nav {
 
 .nav-link {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   padding: 6px 16px;
   font-family: 'DM Sans', sans-serif;
   font-size: 1rem;
@@ -117,6 +133,42 @@ nav {
 
 .nav-link.active { color: var(--c-teal); }
 .nav-link.active::after { transform: translateX(-50%) scaleX(1); }
+
+/* ── DISTINTIVO NUEVO EN NAV ── */
+.nav-badge {
+  display: inline-block;
+  margin-right: 7px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(8, 131, 149, 0.12);
+  border: 1px solid rgba(8, 131, 149, 0.35);
+  color: var(--c-teal);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.nav-badge-text {
+  display: inline-block;
+}
+
+.nav-badge,
+.nav-badge-text {
+  animation: nav-badge-float 2.8s ease-in-out infinite;
+}
+
+@keyframes nav-badge-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-3px); }
+}
+
+.nav-link:hover .nav-badge {
+  background: var(--c-teal);
+  color: var(--c-ice);
+}
 
 /* ── BOTÓN VER EN VIVO ── */
 .btn-live {
@@ -917,6 +969,12 @@ main {
   transition: color 0.2s ease;
 }
 .footer-links a:hover { color: var(--c-mist); }
+
+.footer-links a.footer-link-ai {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+}
 
 .footer-meta { text-align: right; }
 .footer-meta p {

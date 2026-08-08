@@ -18,12 +18,13 @@
 
   <!-- ── HEADER ── -->
   <header>
-    <a href="{% url 'Home' %}" class="logo">
+    <a href="{% url 'HomeAI' %}" class="logo">
       <img src="{% static 'src/Logos/LogoAirSense.png' %}" alt="AirSense" class="logo-img"/>
       <span class="logo-text">Air<span>Sense</span></span>
     </a>
     <nav>
-      <a href="{% url 'Home' %}" class="nav-link">Home</a>
+      <a href="{% url 'HomeAI' %}" class="nav-link"><span class="nav-badge">Nuevo</span><span class="nav-badge-text">AirSense AI</span></a>
+      <a href="{% url 'Home' %}" class="nav-link">AirSense Classic</a>
       <a href="{% url 'dashboard:home' %}" class="nav-link active">Dashboard</a>
       <a href="{% url 'documentacion' %}" class="nav-link">Documentación</a>
     </nav>
