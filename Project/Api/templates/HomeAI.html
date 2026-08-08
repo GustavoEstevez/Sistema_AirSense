@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AirSense AI - Monitoreo Ambiental</title>
+  <title>AirSense AI - Monitoreo Ambiental con Inteligencia Artificial</title>
   <link rel="icon" href="{% static 'src/FaviconAirSense.png' %}" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
@@ -61,64 +61,65 @@
       </button>
     </div>
 
-<section class="home-section hero-section">
-  <div class="home-container hero-inner">
+    <!-- ── HERO ── -->
+    <section class="home-section hero-section">
+      <div class="home-container hero-inner">
 
-<div class="hero-text">
-  <span class="section-eyebrow">Monitoreo Ambiental Inteligente · Arduino</span>
+        <div class="hero-text">
+          <span class="hero-ai-badge">🤖 Novedad 2026 — Agente de Inteligencia Artificial</span>
 
-  <h1 class="hero-title">
-    Mejorando la calidad de vida mediante el
-    <span>monitoreo ambiental</span>
-  </h1>
+          <span class="section-eyebrow">Monitoreo Ambiental Inteligente · ESP32 + IA</span>
 
-  <p class="hero-desc">
-    AirSense analiza temperatura, humedad y ruido ambiental para generar métricas,
-    recomendaciones y alertas en tiempo real.
-  </p>
+          <h1 class="hero-title">
+            AirSense evolucionó: ahora
+            <span>piensa con Inteligencia Artificial</span>
+          </h1>
 
-  <div class="hero-stat-inline">
-    <span class="hero-stat-num">72.7%</span>
-    <span class="hero-stat-text">
-      de las mediciones de ruido estuvieron fuera del rango saludable
-    </span>
-  </div>
+          <p class="hero-desc">
+            La nueva versión de AirSense mide temperatura, humedad, ruido y calidad del aire
+            con mayor precisión, se conecta por WiFi y Bluetooth, y cuenta con un agente de
+            Inteligencia Artificial que interpreta cada medición, arma reportes automáticos
+            y envía alertas por Gmail y WhatsApp.
+          </p>
 
-  <div class="hero-actions">
-    <a href="{% url 'dashboard:home' %}" class="btn-cta">
-      <span class="live-dot"></span>
-      Ver Dashboard en vivo
-    </a>
+          <div class="hero-stat-inline">
+            <span class="hero-stat-num">72.7%</span>
+            <span class="hero-stat-text">
+              de las mediciones de ruido del prototipo original estuvieron fuera del rango
+              saludable — hoy la IA las detecta al instante
+            </span>
+          </div>
 
-    <a href="{% url 'documentacion' %}" class="btn-ghost-home">
-      Ver documentación
-    </a>
-  </div>
-</div>
+          <div class="hero-actions">
+            <a href="{% url 'dashboard:home' %}" class="btn-cta">
+              <span class="live-dot"></span>
+              Ver Dashboard en vivo
+            </a>
 
-<div class="hero-visual">
+            <a href="{% url 'documentacion' %}" class="btn-ghost-home">
+              Ver documentación
+            </a>
+          </div>
+        </div>
 
-  <div class="hero-device-card">
+        <div class="hero-visual">
+          <div class="hero-device-card">
+            <img
+              src="{% static 'src/Fotos/AirSenseHero.png' %}"
+              alt="Dispositivo AirSense actualizado con ESP32 e Inteligencia Artificial"
+              class="hero-device">
+          </div>
+        </div>
 
-    <img
-      src="{% static 'src/Fotos/AirSenseHero.png' %}"
-      alt="Dispositivo AirSense"
-      class="hero-device">
-
-  </div>
-
-</div>
-
-  </div>
-</section>
-
+      </div>
+    </section>
 
     <!-- ── EL PROBLEMA ── -->
     <section class="home-section problem-section">
       <div class="home-container">
         <span class="section-eyebrow">¿Por qué AirSense?</span>
         <h2 class="section-title">No podemos mejorar<br><span>lo que no medimos</span></h2>
-        <p class="section-desc">Estudiantes y docentes pasan gran parte del día en aulas donde la temperatura, la humedad y el ruido afectan el bienestar y el rendimiento académico. Sin embargo, estas condiciones rara vez son monitoreadas.</p>
+        <p class="section-desc">Estudiantes y docentes pasan gran parte del día en aulas donde la temperatura, la humedad, el ruido y la calidad del aire afectan el bienestar y el rendimiento académico. Sin embargo, estas condiciones rara vez son monitoreadas, y mucho menos interpretadas automáticamente.</p>
         <div class="stats-row">
           <div class="stat-block stat-block--danger">
             <span class="stat-num">72.7%</span>
@@ -139,96 +140,282 @@
       </div>
     </section>
 
- <!-- ── CÓMO FUNCIONA ── -->
-<section class="home-section how-section">
-  <div class="home-container">
-
-    <span class="section-eyebrow">Tecnología</span>
-
-    <h2 class="section-title">Cómo funciona</h2>
-
-    <p class="section-desc">
-      AirSense monitorea continuamente las condiciones ambientales y transforma los datos en información útil.
-    </p>
-
-    <div class="steps-grid">
-
-      <!-- PASO 1 -->
-      <div class="step-card">
-
-        <div class="step-num">01</div>
-
-        <img
-          src="{% static 'src/Fotos/Dispositivo.png' %}"
-          alt="Arduino leyendo sensores"
-          class="step-photo"
-        >
-
-        <h3>Arduino mide</h3>
-
-        <p>
-          El DHT11 mide temperatura y humedad. El KY-038 captura
-          el nivel de ruido ambiental en decibeles cada 2 segundos.
+    <!-- ══ EVOLUCIÓN DE AIRSENSE ══ -->
+    <section class="home-section evolution-section">
+      <div class="home-container">
+        <span class="section-eyebrow">Registro de actualización · Agosto 2026</span>
+        <h2 class="section-title">Evolución de <span>AirSense</span></h2>
+        <p class="section-desc">
+          Tras la primera etapa de pruebas con el prototipo original, el equipo detectó tres
+          limitaciones concretas —un sensor de ruido difícil de calibrar, la falta de
+          conectividad inalámbrica y la ausencia de medición de calidad del aire— y las
+          resolvió incorporando nuevos componentes y un agente de Inteligencia Artificial al sistema.
         </p>
 
+        <div class="evo-compare">
+          <div class="evo-card evo-card--old">
+            <span class="evo-tag evo-tag--old">Versión 1 · Prototipo inicial</span>
+            <h3>AirSense v1</h3>
+            <ul class="evo-list">
+              <li>Arduino UNO</li>
+              <li>Pantalla LCD 16x2</li>
+              <li>Sensor DHT11</li>
+              <li>Sensor KY-038</li>
+              <li>Alimentación por cable USB</li>
+              <li>Sin conectividad inalámbrica</li>
+              <li>Sin medición de calidad del aire (CO2)</li>
+              <li>Prototipo experimental</li>
+            </ul>
+          </div>
+
+          <div class="evo-arrow">→</div>
+
+          <div class="evo-card evo-card--new">
+            <span class="evo-tag evo-tag--new">Versión 2 · AirSense actual</span>
+            <h3>AirSense AI</h3>
+            <ul class="evo-list">
+              <li>ESP32 con WiFi y Bluetooth</li>
+              <li>Pantalla OLED de alta resolución</li>
+              <li>Sensor SHT30 de mayor precisión</li>
+              <li>Sensor MQ135 para calidad del aire (CO2)</li>
+              <li>Micrófono MAX4466</li>
+              <li>Batería recargable 18650</li>
+              <li>Carcasa diseñada e impresa en 3D</li>
+              <li>Dashboard en tiempo real</li>
+              <li>Agente de Inteligencia Artificial</li>
+              <li>Reportes automáticos</li>
+              <li>Alertas por Gmail y WhatsApp</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="evo-subhead">Principales mejoras</h3>
+        <div class="evo-features">
+          <div class="evo-feature">
+            <span class="evo-feature-icon">🌡️</span>
+            <span class="evo-feature-text">Mayor precisión en temperatura y humedad</span>
+          </div>
+          <div class="evo-feature">
+            <span class="evo-feature-icon">🫁</span>
+            <span class="evo-feature-text">Incorporación del monitoreo de calidad del aire (CO2)</span>
+          </div>
+          <div class="evo-feature">
+            <span class="evo-feature-icon">📶</span>
+            <span class="evo-feature-text">Conectividad WiFi</span>
+          </div>
+          <div class="evo-feature">
+            <span class="evo-feature-icon">🔋</span>
+            <span class="evo-feature-text">Funcionamiento portátil con batería</span>
+          </div>
+          <div class="evo-feature">
+            <span class="evo-feature-icon">📊</span>
+            <span class="evo-feature-text">Dashboard en tiempo real</span>
+          </div>
+          <div class="evo-feature">
+            <span class="evo-feature-icon">🧠</span>
+            <span class="evo-feature-text">Inteligencia Artificial que analiza las mediciones</span>
+          </div>
+          <div class="evo-feature">
+            <span class="evo-feature-icon">📧</span>
+            <span class="evo-feature-text">Reportes automáticos por Gmail</span>
+          </div>
+          <div class="evo-feature">
+            <span class="evo-feature-icon">💬</span>
+            <span class="evo-feature-text">Alertas inteligentes por WhatsApp</span>
+          </div>
+          <div class="evo-feature">
+            <span class="evo-feature-icon">🖥️</span>
+            <span class="evo-feature-text">Nueva interfaz OLED</span>
+          </div>
+          <div class="evo-feature">
+            <span class="evo-feature-icon">🖨️</span>
+            <span class="evo-feature-text">Carcasa impresa en 3D</span>
+          </div>
+        </div>
+
+        <h3 class="evo-subhead">Comparación de componentes</h3>
+        <div class="spec-table-wrap">
+          <table class="spec-table">
+            <thead>
+              <tr>
+                <th>Componente / Función</th>
+                <th>Versión anterior</th>
+                <th>Versión actualizada</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Pantalla / interfaz visual</td>
+                <td class="spec-old">LCD 16x2 con módulo I2C (solo texto)</td>
+                <td class="spec-new">OLED 1.3" 128x64 I2C SH1106 (mayor resolución, íconos y más datos)</td>
+              </tr>
+              <tr>
+                <td>Sensor de temperatura y humedad</td>
+                <td class="spec-old">DHT11 (±2°C / ±5% HR, lectura cada 2 s)</td>
+                <td class="spec-new">SHT30 I2C (±0.3°C / ±3% HR, lectura más rápida y estable)</td>
+              </tr>
+              <tr>
+                <td>Detección de ruido / sonido</td>
+                <td class="spec-old">KY-038 (salida analógica, calibración manual poco confiable)</td>
+                <td class="spec-new">Micrófono electret MAX4466 (señal más limpia, ganancia ajustable)</td>
+              </tr>
+              <tr>
+                <td>Calidad del aire</td>
+                <td class="spec-old">No existía esta variable</td>
+                <td class="spec-new">Sensor de gas MQ135 (NH3, NOx, CO2, alcohol, benceno y humo)</td>
+              </tr>
+              <tr>
+                <td>Conectividad y procesamiento</td>
+                <td class="spec-old">Arduino UNO (sin internet, solo cable USB)</td>
+                <td class="spec-new">NodeMCU ESP32 (WiFi + Bluetooth 4.2, IoT y envío remoto)</td>
+              </tr>
+              <tr>
+                <td>Alimentación / autonomía</td>
+                <td class="spec-old">Cable USB fijo, sin batería</td>
+                <td class="spec-new">TP4056 + Step Up Boost con batería 18650 (portátil y recargable)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
+    </section>
 
-      <div class="step-connector">→</div>
-
-      <!-- PASO 2 -->
-      <div class="step-card">
-
-        <div class="step-num">02</div>
-
-        <img
-          src="{% static 'src/Fotos/JS.png' %}"
-          alt="Comunicación serial"
-          class="step-photo"
-        >
-
-        <h3>Los datos viajan</h3>
-
-        <p>
-          Los datos se transmiten por comunicación serial USB a la
-          computadora en formato JSON, en tiempo real y sin interrupciones.
+    <!-- ══ INTELIGENCIA ARTIFICIAL ══ -->
+    <section class="home-section ai-section">
+      <div class="home-container">
+        <span class="section-eyebrow">Novedad 2026 · Agente Inteligente</span>
+        <h2 class="section-title">AirSense ahora <span>interpreta</span> lo que mide</h2>
+        <p class="section-desc">
+          Más allá de sensar, la nueva versión incorpora un agente de Inteligencia Artificial
+          que analiza en tiempo real las variables ambientales, redacta reportes automáticos
+          y avisa apenas detecta una condición fuera de los valores saludables, sin necesidad
+          de que alguien esté mirando el dashboard.
         </p>
 
+        <div class="ai-grid">
+          <div class="ai-card">
+            <span class="ai-icon">🤖</span>
+            <h3>Agente de Inteligencia Artificial</h3>
+            <p>Analiza continuamente temperatura, humedad, ruido y calidad del aire, comparándolas con los valores de referencia investigados (OMS, ASHRAE, Resolución 295/03 SRT) para determinar si el ambiente es saludable.</p>
+          </div>
+          <div class="ai-card">
+            <span class="ai-icon">📡</span>
+            <h3>Dashboard en tiempo real</h3>
+            <p>Recibe los datos del ESP32 por WiFi y los muestra en vivo, sin depender de un cable serial ni de una computadora conectada todo el tiempo.</p>
+          </div>
+          <div class="ai-card">
+            <span class="ai-icon">📧</span>
+            <h3>Reportes automáticos por Gmail</h3>
+            <p>El sistema arma y envía informes periódicos con el estado del ambiente monitoreado directamente a la casilla de correo configurada.</p>
+          </div>
+          <div class="ai-card">
+            <span class="ai-icon">💬</span>
+            <h3>Alertas inteligentes por WhatsApp</h3>
+            <p>Ante una condición fuera de rango, la IA dispara una alerta instantánea por WhatsApp para poder actuar a tiempo.</p>
+          </div>
+        </div>
+
+        <p class="ai-footnote">
+          Estas funciones se apoyan en la conectividad WiFi y Bluetooth del ESP32, que
+          reemplazó al Arduino UNO como unidad central y permitió pensar el dashboard como
+          una aplicación conectada, ya no como un simple gráfico alimentado por cable serial.
+        </p>
       </div>
+    </section>
 
-      <div class="step-connector">→</div>
+    <!-- ── CÓMO FUNCIONA ── -->
+    <section class="home-section how-section">
+      <div class="home-container">
 
-      <!-- PASO 3 -->
-      <div class="step-card">
+        <span class="section-eyebrow">Tecnología</span>
 
-        <div class="step-num">03</div>
+        <h2 class="section-title">Cómo funciona ahora</h2>
 
-        <img
-          src="{% static 'src/Fotos/DashboardLive.jpg' %}"
-          alt="Dashboard AirSense"
-          class="step-photo"
-        >
-
-        <h3>Dashboard analiza</h3>
-
-        <p>
-          El sistema visualiza métricas, detecta valores fuera de rango
-          y genera alertas automáticas con recomendaciones según
-          estándares OMS.
+        <p class="section-desc">
+          AirSense combina sensores de mayor precisión con conectividad WiFi y un agente de
+          Inteligencia Artificial que transforma cada lectura en información útil, en segundos.
         </p>
 
+        <div class="steps-grid">
+
+          <!-- PASO 1 -->
+          <div class="step-card">
+            <div class="step-num">01</div>
+            <img
+              src="{% static 'src/Fotos/Dispositivo.png' %}"
+              alt="Sensores AirSense midiendo"
+              class="step-photo"
+            >
+            <h3>Los sensores miden</h3>
+            <p>
+              El SHT30 mide temperatura y humedad con mayor precisión, el MQ135 analiza la
+              calidad del aire y el micrófono MAX4466 capta el nivel de ruido, todo visible
+              en la pantalla OLED del dispositivo.
+            </p>
+          </div>
+
+          <div class="step-connector">→</div>
+
+          <!-- PASO 2 -->
+          <div class="step-card">
+            <div class="step-num">02</div>
+            <img
+              src="{% static 'src/Fotos/ESP32.png' %}"
+              alt="ESP32 transmitiendo por WiFi"
+              class="step-photo"
+            >
+            <h3>El ESP32 transmite</h3>
+            <p>
+              Los datos viajan por WiFi hacia el dashboard en tiempo real, sin cables ni
+              depender de una computadora conectada.
+            </p>
+          </div>
+
+          <div class="step-connector">→</div>
+
+          <!-- PASO 3 -->
+          <div class="step-card">
+            <div class="step-num">03</div>
+            <img
+              src="{% static 'src/Fotos/AgenteIA.png' %}"
+              alt="Agente de Inteligencia Artificial analizando datos"
+              class="step-photo"
+            >
+            <h3>La IA interpreta</h3>
+            <p>
+              El agente de Inteligencia Artificial compara cada medición con los valores
+              saludables investigados y detecta automáticamente si hay una condición de riesgo.
+            </p>
+          </div>
+
+          <div class="step-connector">→</div>
+
+          <!-- PASO 4 -->
+          <div class="step-card">
+            <div class="step-num">04</div>
+            <img
+              src="{% static 'src/Fotos/Alertas.png' %}"
+              alt="Alertas automáticas por Gmail y WhatsApp"
+              class="step-photo"
+            >
+            <h3>Llegan las alertas</h3>
+            <p>
+              Apenas se detecta un valor fuera de rango, AirSense envía un reporte por Gmail
+              y una alerta por WhatsApp, sin que nadie tenga que estar mirando el dashboard.
+            </p>
+          </div>
+
+        </div>
+
       </div>
-
-    </div>
-
-  </div>
-</section>
+    </section>
 
     <!-- ── RESULTADOS ── -->
     <section class="home-section results-section">
       <div class="home-container">
         <span class="section-eyebrow">Datos reales · E.E.S.T N°1 2026</span>
         <h2 class="section-title">Lo que revelaron<br><span>las mediciones</span></h2>
-        <p class="section-desc">Mediciones realizadas en 3 espacios de la institución durante el primer semestre de 2026.</p>
+        <p class="section-desc">Mediciones registradas con el primer prototipo en 3 espacios de la institución durante el primer semestre de 2026. Estos datos fueron el punto de partida que motivó la actualización del sistema y la incorporación de Inteligencia Artificial.</p>
 
         <div class="results-grid">
           <div class="result-card result-card--alert">
@@ -323,111 +510,135 @@
       </div>
     </section>
 
-<!-- ── HARDWARE ── -->
-<section class="home-section hardware-section">
-  <div class="home-container">
-    <span class="section-eyebrow">Open Hardware</span>
-    <h2 class="section-title">Componentes del sistema</h2>
+    <!-- ── HARDWARE ── -->
+    <section class="home-section hardware-section">
+      <div class="home-container">
+        <span class="section-eyebrow">Open Hardware · Versión actualizada</span>
+        <h2 class="section-title">Componentes del sistema</h2>
 
-    <div class="hw-grid">
-      <div class="hw-card hw-card-featured">
+        <div class="hw-grid">
 
-  <img
-    src="{% static 'src/Fotos/Dispositivo.png' %}"
-    alt="Dispositivo AirSense"
-    class="hw-img hw-img-featured"
-  >
+          <div class="hw-card hw-card-featured">
+            <img
+              src="{% static 'src/Fotos/Dispositivo.png' %}"
+              alt="Dispositivo AirSense actualizado"
+              class="hw-img hw-img-featured"
+            >
+            <div class="hw-tag">AirSense AI</div>
+            <h3>Dispositivo Completo</h3>
+            <p>
+              Sistema de monitoreo ambiental con Inteligencia Artificial integrada. Mide
+              temperatura, humedad, ruido y calidad del aire en tiempo real, transmite por
+              WiFi y genera reportes y alertas automáticas.
+            </p>
+          </div>
 
-  <div class="hw-tag">AirSense</div>
+          <!-- ESP32 -->
+          <div class="hw-card">
+            <img
+              src="{% static 'src/Fotos/ESP32.png' %}"
+              alt="NodeMCU ESP32"
+              class="hw-img"
+            >
+            <div class="hw-tag">ESP32 WROOM</div>
+            <h3>Microcontrolador WiFi + Bluetooth</h3>
+            <p>
+              Reemplaza al Arduino UNO. Procesa las lecturas, corre el agente de IA y
+              transmite los datos por WiFi hacia el dashboard.
+            </p>
+          </div>
 
-  <h3>Dispositivo Completo</h3>
+          <!-- OLED -->
+          <div class="hw-card">
+            <img
+              src="{% static 'src/Fotos/OLED.png' %}"
+              alt="Pantalla OLED SH1106"
+              class="hw-img"
+            >
+            <div class="hw-tag">OLED 1.3" SH1106</div>
+            <h3>Pantalla de Alta Resolución</h3>
+            <p>
+              128x64 píxeles vía I2C. Muestra las cuatro variables en simultáneo, con mejor
+              legibilidad que la LCD 16x2 original.
+            </p>
+          </div>
 
-  <p>
-    Sistema de monitoreo ambiental desarrollado para medir temperatura,
-    humedad y ruido en tiempo real. Integra sensores, visualización local
-    y dashboard web para generar métricas y recomendaciones.
-  </p>
+          <!-- SHT30 -->
+          <div class="hw-card">
+            <img
+              src="{% static 'src/Fotos/SHT30.png' %}"
+              alt="Sensor SHT30"
+              class="hw-img"
+            >
+            <div class="hw-tag">SHT30 I2C</div>
+            <h3>Temperatura y Humedad</h3>
+            <p>
+              Precisión ±0.3°C y ±3% HR. Reemplaza al DHT11 con lecturas más rápidas y estables.
+            </p>
+          </div>
 
-</div>
+          <!-- MQ135 -->
+          <div class="hw-card">
+            <img
+              src="{% static 'src/Fotos/MQ135.png' %}"
+              alt="Sensor de gas MQ135"
+              class="hw-img"
+            >
+            <div class="hw-tag">MQ135</div>
+            <h3>Calidad del Aire</h3>
+            <p>
+              Mide NH3, NOx, CO2, alcohol, benceno y humo. La variable que el prototipo
+              original no contemplaba.
+            </p>
+          </div>
 
-      <!-- Arduino -->
-      <div class="hw-card">
-        <img
-          src="{% static 'src/Fotos/Arduino.png' %}"
-          alt="Arduino UNO"
-          class="hw-img"
-        >
-        <div class="hw-tag">Arduino UNO</div>
-        <h3>Microcontrolador</h3>
-        <p>
-          Cerebro del sistema. Procesa las lecturas de los sensores y
-          gestiona la comunicación serial y las alertas visuales.
-        </p>
+          <!-- MAX4466 -->
+          <div class="hw-card">
+            <img
+              src="{% static 'src/Fotos/MAX4466.png' %}"
+              alt="Micrófono MAX4466"
+              class="hw-img"
+            >
+            <div class="hw-tag">MAX4466</div>
+            <h3>Micrófono de Ruido</h3>
+            <p>
+              Amplificador electret con ganancia ajustable. Reemplaza al KY-038 con una
+              señal más limpia y confiable.
+            </p>
+          </div>
+
+          <!-- Batería -->
+          <div class="hw-card">
+            <img
+              src="{% static 'src/Fotos/Bateria18650.png' %}"
+              alt="Batería 18650 con módulo TP4056"
+              class="hw-img"
+            >
+            <div class="hw-tag">TP4056 + 18650</div>
+            <h3>Autonomía Portátil</h3>
+            <p>
+              Módulo de carga con batería recargable 18650. AirSense ya no depende de estar enchufado.
+            </p>
+          </div>
+
+          <!-- Carcasa -->
+          <div class="hw-card">
+            <img
+              src="{% static 'src/Fotos/Carcasa3D.png' %}"
+              alt="Carcasa impresa en 3D"
+              class="hw-img"
+            >
+            <div class="hw-tag">Impresión 3D</div>
+            <h3>Carcasa Propia</h3>
+            <p>
+              Diseñada por el equipo, con ventana para la pantalla OLED y orificios para el
+              micrófono y el sensor de gas.
+            </p>
+          </div>
+
+        </div>
       </div>
-
-      <!-- DHT11 -->
-      <div class="hw-card">
-        <img
-          src="{% static 'src/Fotos/DHT.png' %}"
-          alt="DHT11"
-          class="hw-img"
-        >
-        <div class="hw-tag">DHT11</div>
-        <h3>Temperatura y Humedad</h3>
-        <p>
-          Precisión ±0.5°C y ±2%. Mide las condiciones térmicas del
-          ambiente cada 2 segundos en tiempo real.
-        </p>
-      </div>
-
-      <!-- KY-038 -->
-      <div class="hw-card">
-        <img
-          src="{% static 'src/Fotos/KY.png' %}"
-          alt="KY-038"
-          class="hw-img"
-        >
-        <div class="hw-tag">KY-038</div>
-        <h3>Sensor de Sonido</h3>
-        <p>
-          Micrófono analógico. Captura el nivel de ruido ambiental
-          estimado en dB mediante calibración matemática.
-        </p>
-      </div>
-
-      <!-- LCD -->
-      <div class="hw-card">
-        <img
-          src="{% static 'src/Fotos/LCD.png' %}"
-          alt="LCD 16x2"
-          class="hw-img"
-        >
-        <div class="hw-tag">LCD 16x2</div>
-        <h3>Display Local</h3>
-        <p>
-          Con módulo I2C. Muestra temperatura, humedad y ruido
-          directamente en el dispositivo sin necesidad de computadora.
-        </p>
-      </div>
-
-      <!-- LED RGB -->
-      <div class="hw-card">
-        <img
-          src="{% static 'src/Fotos/LED.png' %}"
-          alt="LED RGB"
-          class="hw-img"
-        >
-        <div class="hw-tag">LED RGB</div>
-        <h3>Indicador Visual</h3>
-        <p>
-          Verde = saludable, amarillo = advertencia, rojo = alerta.
-          Retroalimentación inmediata del estado ambiental.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
+    </section>
 
     <!-- ══ SOBRE EL PROYECTO ══ -->
     <section class="home-section about-section">
@@ -436,8 +647,8 @@
           <span class="section-eyebrow">Sobre el proyecto</span>
           <h2 class="section-title">Ingeniería y Tecnología<br><span>en acción</span></h2>
           <p>AirSense es un proyecto de la categoría <strong>Ingeniería y Tecnología — Categoría B</strong> (trabajos institucionales) presentado en la Feria de Educación, Arte, Ciencias y Tecnología (ACTE) 2026 de la Provincia de Buenos Aires.</p>
-          <p>El proyecto surge de una pregunta investigable: ¿las condiciones ambientales de los espacios de nuestra escuela son saludables? Para responderla, el equipo desarrolló un sistema de monitoreo completo que combina hardware Arduino con una plataforma web de visualización en tiempo real.</p>
-          <p>La Carpeta de Campo registra todo el proceso de investigación, desde las hipótesis iniciales hasta los resultados obtenidos, siguiendo los lineamientos curriculares de la DGCyE Buenos Aires.</p>
+          <p>El proyecto surge de una pregunta investigable: ¿las condiciones ambientales de los espacios de nuestra escuela son saludables? Para responderla, el equipo desarrolló un sistema de monitoreo completo que combina hardware ESP32 con una plataforma web de visualización en tiempo real y un agente de Inteligencia Artificial.</p>
+          <p>La Carpeta de Campo registra todo el proceso de investigación, desde las hipótesis iniciales hasta la actualización del prototipo y la incorporación de IA, siguiendo los lineamientos curriculares de la DGCyE Buenos Aires.</p>
         </div>
         <div class="about-data">
           <div class="about-data-card">
