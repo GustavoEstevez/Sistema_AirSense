@@ -385,7 +385,7 @@ main {
 /* ── Descripción ── */
 .section-desc {
   font-size: 1.05rem;
-  color: #5a7f8a;
+  color: #3E6570;
   max-width: 640px;
   margin: 0 0 48px;
   line-height: 1.7;
@@ -1991,30 +1991,67 @@ html:not(.js) .ht-placeholder,
   --c-soft:      #9DC7CF;
 }
 
-/* ── Botón de tema ── */
+/* ── Switch de tema ── */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 .theme-toggle {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 58px;
+  height: 32px;
   flex-shrink: 0;
+  padding: 0;
   border: 1px solid rgba(8,131,149,0.35);
-  border-radius: 50%;
-  background: rgba(8,131,149,0.08);
+  border-radius: 999px;
+  background: rgba(8,131,149,0.12);
   color: var(--c-teal);
   cursor: pointer;
-  transition: background 0.22s ease, color 0.22s ease, transform 0.22s ease;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.22s ease;
 }
 .theme-toggle:hover {
-  background: var(--c-teal);
-  color: var(--c-ice);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
+  border-color: rgba(8,131,149,0.55);
 }
-.theme-toggle svg { width: 18px; height: 18px; }
-.theme-toggle .theme-icon--sun { display: none; }
-:root[data-theme="dark"] .theme-toggle .theme-icon--sun { display: block; }
-:root[data-theme="dark"] .theme-toggle .theme-icon--moon { display: none; }
+.theme-toggle svg {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  z-index: 2;
+  pointer-events: none;
+  transition: color 0.25s ease;
+}
+.theme-toggle .theme-icon--sun  { left: 9px;  color: #f0a500; }
+.theme-toggle .theme-icon--moon { right: 9px; color: #a9bfc6; }
+.theme-toggle .theme-switch-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 5px rgba(8,45,60,0.35);
+  z-index: 1;
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.25s ease;
+}
+:root[data-theme="dark"] .theme-toggle {
+  background: rgba(46,196,219,0.14);
+  border-color: rgba(46,196,219,0.4);
+}
+:root[data-theme="dark"] .theme-toggle .theme-switch-thumb {
+  transform: translateX(26px);
+  background: #0d5c72;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+}
+:root[data-theme="dark"] .theme-toggle .theme-icon--sun  { color: #7a97a0; }
+:root[data-theme="dark"] .theme-toggle .theme-icon--moon { color: #E8F3F5; }
 
 /* ── Superficies base ── */
 [data-theme="dark"] body,
@@ -2200,3 +2237,33 @@ html:not(.js) .ht-placeholder,
 /* ── Documentación ── */
 [data-theme="dark"] .doc-iframe { background: #16222a; box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
 [data-theme="dark"] .doc-fallback { color: #9DC7CF; }
+
+/* ── Legibilidad en modo claro ────────────────────────────────────
+   Textos un poco más oscuros para mejor contraste sobre fondos
+   claros. Solo aplica en modo claro; el modo oscuro no cambia.
+----------------------------------------------------------------- */
+:root:not([data-theme="dark"]) .logo-text,
+:root:not([data-theme="dark"]) .logo-sub,
+:root:not([data-theme="dark"]) .nav-link { color: #2E5A66; }
+
+:root:not([data-theme="dark"]) .stat-label,
+:root:not([data-theme="dark"]) .home-quote,
+:root:not([data-theme="dark"]) .footer-brand p,
+:root:not([data-theme="dark"]) .footer-links a,
+:root:not([data-theme="dark"]) .footer-meta p,
+:root:not([data-theme="dark"]) body.page-ai .problem-section .section-desc { color: #2E5A66; }
+
+:root:not([data-theme="dark"]) .step-card p,
+:root:not([data-theme="dark"]) .hw-card p,
+:root:not([data-theme="dark"]) .result-values,
+:root:not([data-theme="dark"]) .param-pct,
+:root:not([data-theme="dark"]) .team-role,
+:root:not([data-theme="dark"]) .team-tutor,
+:root:not([data-theme="dark"]) .survey-stat-label,
+:root:not([data-theme="dark"]) .evo-feature-text,
+:root:not([data-theme="dark"]) .doc-fallback { color: #3E6570; }
+
+:root:not([data-theme="dark"]) .result-date,
+:root:not([data-theme="dark"]) .evolution-section .evo-name--old { color: #66858F; }
+
+:root:not([data-theme="dark"]) .footer-links a:hover { color: var(--c-teal); }

@@ -12,7 +12,7 @@
   --white:    #ffffff;
   --gray-50:  #f5f7fb;
   --gray-200: #dde3ee;
-  --gray-500: #6b7693;
+  --gray-500: #5c6886;
   --gray-700: #3b4660;
   --gray-900: #0f1729;
   --success:  #10b981;
@@ -40,9 +40,23 @@ img, svg { display: block; max-width: 100%; }
 /* ── Contenedor ── */
 .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-/* ── Secciones ── */
-.section { padding: 80px 0; background: var(--bg); }
-.section-alt { background: var(--white); border-top: 1px solid var(--border); }
+/* ── Secciones (cuadrícula idéntica al hero de AirSense AI) ── */
+.section {
+  padding: 80px 0;
+  background:
+    linear-gradient(rgba(8, 131, 149, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(8, 131, 149, 0.05) 1px, transparent 1px),
+    #EBF4F6;
+  background-size: 34px 34px, 34px 34px, auto;
+}
+.section-alt {
+  background:
+    linear-gradient(rgba(8, 131, 149, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(8, 131, 149, 0.05) 1px, transparent 1px),
+    #EBF4F6;
+  background-size: 34px 34px, 34px 34px, auto;
+  border-top: 1px solid var(--border);
+}
 
 .section-header { text-align: center; max-width: 640px; margin: 0 auto 48px; }
 .section-header h2 {
@@ -211,7 +225,18 @@ img, svg { display: block; max-width: 100%; }
   --gradient-card: linear-gradient(180deg, #16222a 0%, #131f26 100%);
 }
 
-[data-theme="dark"] .section-alt { background: #111c22; border-top-color: rgba(46,196,219,0.15); }
+[data-theme="dark"] .section,
+[data-theme="dark"] .section-alt {
+  background:
+    linear-gradient(rgba(46,196,219,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46,196,219,0.06) 1px, transparent 1px),
+    #0d1518;
+  background-size: 34px 34px, 34px 34px, auto;
+}
+[data-theme="dark"] .section-alt {
+  background-color: #111c22;
+  border-top-color: rgba(46,196,219,0.15);
+}
 [data-theme="dark"] .card { box-shadow: 0 8px 24px -8px rgba(0,0,0,.5); }
 
 [data-theme="dark"] .section-header h2,
