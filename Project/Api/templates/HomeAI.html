@@ -143,10 +143,10 @@
           </p>
 
           <div class="hero-stat-inline">
-            <span class="hero-stat-num">72.7%</span>
+            <span class="hero-stat-num">72,7%</span>
             <span class="hero-stat-text">
               de las mediciones de ruido del prototipo original estuvieron fuera del rango
-              saludable — hoy la IA las detecta al instante
+              saludable. AirSense AI transforma estos datos en análisis y recomendaciones inteligentes.
             </span>
           </div>
 
@@ -156,7 +156,7 @@
               Ver Dashboard en vivo
             </a>
 
-            <a href="#ai" class="btn-ghost-home">
+            <a href="#evolucion" class="btn-ghost-home">
               Descubrir AirSense AI
             </a>
           </div>
@@ -171,6 +171,363 @@
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <!-- ── EL PROBLEMA ── -->
+    <section class="home-section problem-section">
+      <div class="home-container">
+        <span class="section-eyebrow">¿Por qué AirSense?</span>
+        <h2 class="section-title">No podemos mejorar<br><span>lo que no medimos</span></h2>
+        <p class="section-desc">Estudiantes y docentes pasan gran parte del día en aulas donde la temperatura, humedad, ruido y calidad del aire pueden afectar el bienestar y el rendimiento académico. Sin embargo, estas condiciones rara vez son monitoreadas de forma continua.</p>
+        <div class="stats-row">
+          <div class="stat-block stat-block--danger">
+            <span class="stat-num">72,7%</span>
+            <span class="stat-label">de las mediciones de ruido estuvieron fuera del rango saludable.</span>
+          </div>
+          <div class="stat-block stat-block--mid">
+            <span class="stat-num">54,5%</span>
+            <span class="stat-label">de las mediciones de temperatura estuvieron por encima del límite recomendado.</span>
+          </div>
+          <div class="stat-block">
+            <span class="stat-num">0</span>
+            <span class="stat-label">sistemas de monitoreo ambiental permanentes en la institución antes de AirSense.</span>
+          </div>
+        </div>
+        <blockquote class="home-quote">
+          <span class="q-type" id="problemQuote">
+            <span class="q-type-text">Muchas veces los problemas están frente a nosotros y no los vemos porque no tenemos las herramientas para medirlos.</span><span class="q-type-cursor" aria-hidden="true"></span>
+          </span>
+        </blockquote>
+
+        <script>
+          (function () {
+            var qEl = document.getElementById('problemQuote');
+            if (!qEl) return;
+            var textEl = qEl.querySelector('.q-type-text');
+            if (!textEl) return;
+            var text = textEl.textContent;
+            textEl.textContent = '';
+            var i = 0;
+            var started = false;
+            function type() {
+              i++;
+              textEl.textContent = text.slice(0, i);
+              if (i < text.length) setTimeout(type, 35);
+              else setTimeout(erase, 4500);
+            }
+            function erase() {
+              i--;
+              textEl.textContent = text.slice(0, i);
+              if (i > 0) setTimeout(erase, 20);
+              else setTimeout(type, 500);
+            }
+            function start() {
+              if (started) return;
+              started = true;
+              type();
+            }
+            function inView() {
+              var r = qEl.getBoundingClientRect();
+              return r.top < window.innerHeight && r.bottom > 0;
+            }
+            function maybeStart() {
+              if (!started && inView()) start();
+            }
+            if ('IntersectionObserver' in window) {
+              var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                  if (e.isIntersecting) { start(); io.disconnect(); }
+                });
+              }, { threshold: 0.2 });
+              io.observe(qEl);
+            }
+            window.addEventListener('scroll', maybeStart, { passive: true });
+            window.addEventListener('resize', maybeStart);
+            setTimeout(maybeStart, 600);
+          })();
+        </script>
+      </div>
+    </section>
+
+    <!-- ══ EVOLUCIÓN DE AIRSENSE ══ -->
+    <section class="home-section evolution-section" id="evolucion">
+      <div class="home-container">
+        <span class="section-eyebrow">Evolución de AirSense</span>
+        <h2 class="section-title">De <span class="evo-name evo-name--old">AirSense Classic</span> a <span class="evo-name evo-name--new">AirSense AI</span></h2>
+        <p class="section-desc">
+          Tras la primera etapa de pruebas con el prototipo original, el equipo detectó tres
+          limitaciones concretas —un sensor de ruido difícil de calibrar, la falta de
+          conectividad inalámbrica y la ausencia de medición de calidad del aire— y las
+          resolvió incorporando nuevos componentes y un agente de Inteligencia Artificial al sistema.
+        </p>
+
+        <div class="evo-compare">
+          <div class="evo-card evo-card--old">
+            <span class="evo-tag evo-tag--old">Versión 1 · Prototipo inicial</span>
+            <div class="evo-photo">
+              <img src="{% static 'src/Fotos/AirSenseClassic.png' %}" alt="AirSense Classic">
+            </div>
+            <h3>AirSense Classic</h3>
+            <ul class="evo-list">
+              <li>Arduino UNO</li>
+              <li>Pantalla LCD 16x2</li>
+              <li>Sensor DHT11</li>
+              <li>Sensor KY-038</li>
+              <li>Alimentación por cable USB</li>
+              <li>Sin conectividad inalámbrica</li>
+              <li>Sin medición de calidad del aire (CO2)</li>
+              <li>Prototipo experimental</li>
+            </ul>
+          </div>
+
+          <div class="evo-arrow" aria-hidden="true"></div>
+
+          <div class="evo-card evo-card--new">
+            <span class="evo-tag evo-tag--new">Versión 2 · AirSense actual</span>
+            <div class="evo-photo">
+              <img src="{% static 'src/Fotos/HeroAI.png' %}" alt="AirSense AI">
+            </div>
+            <h3>AirSense AI</h3>
+            <ul class="evo-list">
+              <li>ESP32 con WiFi y Bluetooth</li>
+              <li>Pantalla OLED de alta resolución</li>
+              <li>Sensor SHT30 de mayor precisión</li>
+              <li>Sensor MQ135 para calidad del aire (CO2)</li>
+              <li>Micrófono MAX4466</li>
+              <li>Batería recargable 18650</li>
+              <li>Carcasa diseñada e impresa en 3D</li>
+              <li>Dashboard en tiempo real</li>
+              <li>Agente de Inteligencia Artificial</li>
+              <li>Reportes automáticos</li>
+              <li>Alertas por Gmail y WhatsApp</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="evo-subhead">Principales mejoras</h3>
+        <div class="evo-carousel">
+          <button class="evo-nav evo-nav--prev" id="evoPrev" aria-label="Anterior">‹</button>
+          <div class="evo-viewport">
+            <div class="evo-track" id="evoTrack">
+          <div class="evo-feature">
+            <span class="evo-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V4a2 2 0 0 0-4 0v10.76a4 4 0 1 0 4 0z"/></svg></span>
+            <span class="evo-feature-text">Mayor precisión en temperatura y humedad</span>
+          </div>
+          <div class="evo-feature">
+            <span class="evo-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg></span>
+            <span class="evo-feature-text">Incorporación del monitoreo de calidad del aire (CO2)</span>
+          </div>
+          <div class="evo-feature">
+            <span class="evo-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><path d="M12 20h.01"/></svg></span>
+            <span class="evo-feature-text">Conectividad WiFi</span>
+          </div>
+          <div class="evo-feature">
+            <span class="evo-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"/><line x1="23" y1="11" x2="23" y2="13"/><line x1="5" y1="10" x2="5" y2="14"/></svg></span>
+            <span class="evo-feature-text">Funcionamiento portátil con batería</span>
+          </div>
+          <div class="evo-feature">
+            <span class="evo-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg></span>
+            <span class="evo-feature-text">Dashboard en tiempo real</span>
+          </div>
+          <div class="evo-feature">
+            <span class="evo-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="5"/><line x1="15" y1="2" x2="15" y2="5"/><line x1="9" y1="19" x2="9" y2="22"/><line x1="15" y1="19" x2="15" y2="22"/><line x1="2" y1="9" x2="5" y2="9"/><line x1="2" y1="15" x2="5" y2="15"/><line x1="19" y1="9" x2="22" y2="9"/><line x1="19" y1="15" x2="22" y2="15"/></svg></span>
+            <span class="evo-feature-text">Inteligencia Artificial que analiza las mediciones</span>
+          </div>
+          <div class="evo-feature">
+            <span class="evo-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+            <span class="evo-feature-text">Reportes automáticos por Gmail</span>
+          </div>
+          <div class="evo-feature">
+            <span class="evo-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+            <span class="evo-feature-text">Alertas inteligentes por WhatsApp</span>
+          </div>
+          <div class="evo-feature">
+            <span class="evo-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
+            <span class="evo-feature-text">Nueva interfaz OLED</span>
+          </div>
+          <div class="evo-feature">
+            <span class="evo-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></span>
+            <span class="evo-feature-text">Carcasa impresa en 3D</span>
+          </div>
+            </div>
+          </div>
+          <button class="evo-nav evo-nav--next" id="evoNext" aria-label="Siguiente">›</button>
+        </div>
+
+        <h3 class="evo-subhead">Comparación de componentes</h3>
+        <div class="spec-table-wrap">
+          <table class="spec-table">
+            <thead>
+              <tr>
+                <th>Componente / Función</th>
+                <th>Versión anterior</th>
+                <th>Versión actualizada</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Pantalla / interfaz visual</td>
+                <td class="spec-old">LCD 16x2 con módulo I2C (solo texto)</td>
+                <td class="spec-new">OLED 1.3" 128x64 I2C SH1106 (mayor resolución, íconos y más datos)</td>
+              </tr>
+              <tr>
+                <td>Sensor de temperatura y humedad</td>
+                <td class="spec-old">DHT11 (±2°C / ±5% HR, lectura cada 2 s)</td>
+                <td class="spec-new">SHT30 I2C (±0.3°C / ±3% HR, lectura más rápida y estable)</td>
+              </tr>
+              <tr>
+                <td>Detección de ruido / sonido</td>
+                <td class="spec-old">KY-038 (salida analógica, calibración manual poco confiable)</td>
+                <td class="spec-new">Micrófono electret MAX4466 (señal más limpia, ganancia ajustable)</td>
+              </tr>
+              <tr>
+                <td>Calidad del aire</td>
+                <td class="spec-old">No existía esta variable</td>
+                <td class="spec-new">Sensor de gas MQ135 (NH3, NOx, CO2, alcohol, benceno y humo)</td>
+              </tr>
+              <tr>
+                <td>Conectividad y procesamiento</td>
+                <td class="spec-old">Arduino UNO (sin internet, solo cable USB)</td>
+                <td class="spec-new">NodeMCU ESP32 (WiFi + Bluetooth 4.2, IoT y envío remoto)</td>
+              </tr>
+              <tr>
+                <td>Alimentación / autonomía</td>
+                <td class="spec-old">Cable USB fijo, sin batería</td>
+                <td class="spec-new">TP4056 + Step Up Boost con batería 18650 (portátil y recargable)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ INTELIGENCIA ARTIFICIAL ══ -->
+    <section class="home-section ai-section" id="ai">
+      <div class="home-container">
+        <span class="section-eyebrow">Novedad 2026 · Agente Inteligente</span>
+        <h2 class="section-title ht-type" id="ai-title"
+            data-p1="AirSense ahora "
+            data-p2="interpreta lo que mide"
+            aria-label="AirSense ahora interpreta lo que mide">
+          <span class="ht-placeholder" aria-hidden="true">AirSense ahora <span>interpreta lo que mide</span></span>
+          <span class="typewriter-cursor" aria-hidden="true"></span>
+        </h2>
+
+        <script>
+          (function () {
+            var h2 = document.getElementById('ai-title');
+            if (!h2) return;
+            var p1 = h2.getAttribute('data-p1') || '';
+            var p2 = h2.getAttribute('data-p2') || '';
+            if (!p1 && !p2) { document.documentElement.classList.add('no-type'); return; }
+
+            var mainLen = p1.length;
+            var total = mainLen + p2.length;
+
+            h2.setAttribute('aria-label', (p1 + p2).replace(/\s+/g, ' ').trim());
+            var placeholder = h2.querySelector('.ht-placeholder');
+            var cursor = h2.querySelector('.typewriter-cursor');
+            var layer = document.createElement('span');
+            layer.className = 'ht-type-layer';
+            layer.setAttribute('aria-hidden', 'true');
+            h2.insertBefore(layer, placeholder);
+            var mainNode = document.createTextNode('');
+            var accent = document.createElement('span');
+            layer.appendChild(mainNode);
+            layer.appendChild(accent);
+            layer.appendChild(cursor);
+
+            var minDelay = 26;
+            var maxDelay = 52;
+            var holdTime = 6000;
+
+            function lengthTyped() {
+              return (mainNode.textContent || '').length + (accent.textContent || '').length;
+            }
+
+            function typeDelay(n) {
+              var segLen = (n < mainLen) ? mainLen : total - mainLen;
+              var segStart = (n < mainLen) ? 0 : mainLen;
+              var pos = segLen ? (n - segStart) / segLen : 0;
+              return minDelay + (maxDelay - minDelay) * pos * pos;
+            }
+
+            function eraseDelay(n) {
+              var p = total ? 1 - n / total : 0;
+              return minDelay + (maxDelay - minDelay) * (1 - p);
+            }
+
+            function typeStep() {
+              var n = lengthTyped();
+              if (n < mainLen) {
+                mainNode.textContent = p1.slice(0, n + 1);
+              } else if (n < total) {
+                accent.textContent = p2.slice(0, n - mainLen + 1);
+              } else {
+                cursor.classList.add('typewriter-cursor--fade');
+                setTimeout(function () {
+                  cursor.classList.remove('typewriter-cursor--fade');
+                  setTimeout(erase, holdTime);
+                }, 550);
+                return;
+              }
+              cursor.classList.remove('typewriter-cursor--fade');
+              setTimeout(typeStep, typeDelay(n));
+            }
+
+            function erase() {
+              var n = lengthTyped();
+              if (n > mainLen) {
+                accent.textContent = p2.slice(0, n - mainLen - 1);
+              } else if (n > 0) {
+                mainNode.textContent = p1.slice(0, n - 1);
+              } else {
+                setTimeout(typeStep, 350);
+                return;
+              }
+              setTimeout(erase, eraseDelay(n));
+            }
+
+            setTimeout(typeStep, 400);
+          })();
+        </script>
+
+        <p class="section-desc">
+          Más allá de sensar, la nueva versión incorpora un agente de Inteligencia Artificial
+          que analiza en tiempo real las variables ambientales, redacta reportes automáticos
+          y avisa apenas detecta una condición fuera de los valores saludables, sin necesidad
+          de que alguien esté mirando el dashboard.
+        </p>
+
+        <div class="ai-grid">
+          <div class="ai-card">
+            <span class="ai-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8.5" width="17" height="11" rx="2.5"/><circle cx="9" cy="13.5" r="1.4"/><circle cx="15" cy="13.5" r="1.4"/><path d="M9.5 17.5h5"/><path d="M12 8.5V5"/><circle cx="12" cy="3.6" r="1.2"/></svg></span>
+            <h3>Agente de Inteligencia Artificial</h3>
+            <p>Analiza continuamente temperatura, humedad, ruido y calidad del aire, comparándolas con los valores de referencia investigados (OMS, ASHRAE, Resolución 295/03 SRT) para determinar si el ambiente es saludable.</p>
+          </div>
+          <div class="ai-card">
+            <span class="ai-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M7.76 7.76a6 6 0 0 0 0 8.48"/><path d="M16.24 7.76a6 6 0 0 1 0 8.48"/><path d="M4.9 4.9a10 10 0 0 0 0 14.2"/><path d="M19.1 4.9a10 10 0 0 1 0 14.2"/></svg></span>
+            <h3>Dashboard en tiempo real</h3>
+            <p>Recibe los datos del ESP32 por WiFi y los muestra en vivo, sin depender de un cable serial ni de una computadora conectada todo el tiempo.</p>
+          </div>
+          <div class="ai-card">
+            <span class="ai-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+            <h3>Reportes automáticos por Gmail</h3>
+            <p>El sistema arma y envía informes periódicos con el estado del ambiente monitoreado directamente a la casilla de correo configurada.</p>
+          </div>
+          <div class="ai-card">
+            <span class="ai-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+            <h3>Alertas inteligentes por WhatsApp</h3>
+            <p>Ante una condición fuera de rango, la IA dispara una alerta instantánea por WhatsApp para poder actuar a tiempo.</p>
+          </div>
+        </div>
+
+        <p class="ai-footnote">
+          Estas funciones se apoyan en la conectividad WiFi y Bluetooth del ESP32, que
+          reemplazó al Arduino UNO como unidad central y permitió pensar el dashboard como
+          una aplicación conectada, ya no como un simple gráfico alimentado por cable serial.
+        </p>
       </div>
     </section>
 
@@ -225,402 +582,6 @@
       </div>
     </section>
 
-    <!-- ── EL PROBLEMA ── -->
-    <section class="home-section problem-section">
-      <div class="home-container">
-        <span class="section-eyebrow">¿Por qué AirSense?</span>
-        <h2 class="section-title">No podemos mejorar<br><span>lo que no medimos</span></h2>
-        <p class="section-desc">Estudiantes y docentes pasan gran parte del día en aulas donde la temperatura, la humedad, el ruido y la calidad del aire afectan el bienestar y el rendimiento académico. Sin embargo, estas condiciones rara vez son monitoreadas, y mucho menos interpretadas automáticamente.</p>
-        <div class="stats-row">
-          <div class="stat-block stat-block--danger">
-            <span class="stat-num">72.7%</span>
-            <span class="stat-label">de mediciones de ruido fuera del rango saludable</span>
-          </div>
-          <div class="stat-block stat-block--mid">
-            <span class="stat-num">54.5%</span>
-            <span class="stat-label">de mediciones de temperatura por encima del límite recomendado</span>
-          </div>
-          <div class="stat-block">
-            <span class="stat-num">0</span>
-            <span class="stat-label">sistemas de monitoreo ambiental permanentes en la institución antes de AirSense</span>
-          </div>
-        </div>
-        <blockquote class="home-quote">
-          "Muchas veces los problemas están frente a nosotros y no los vemos porque no tenemos las herramientas para medirlos."
-        </blockquote>
-      </div>
-    </section>
-
-    <!-- ══ EVOLUCIÓN DE AIRSENSE ══ -->
-    <section class="home-section evolution-section">
-      <div class="home-container">
-        <span class="section-eyebrow">Registro de actualización · Agosto 2026</span>
-        <h2 class="section-title">Evolución de <span>AirSense</span></h2>
-        <p class="section-desc">
-          Tras la primera etapa de pruebas con el prototipo original, el equipo detectó tres
-          limitaciones concretas —un sensor de ruido difícil de calibrar, la falta de
-          conectividad inalámbrica y la ausencia de medición de calidad del aire— y las
-          resolvió incorporando nuevos componentes y un agente de Inteligencia Artificial al sistema.
-        </p>
-
-        <div class="evo-compare">
-          <div class="evo-card evo-card--old">
-            <span class="evo-tag evo-tag--old">Versión 1 · Prototipo inicial</span>
-            <h3>AirSense v1</h3>
-            <ul class="evo-list">
-              <li>Arduino UNO</li>
-              <li>Pantalla LCD 16x2</li>
-              <li>Sensor DHT11</li>
-              <li>Sensor KY-038</li>
-              <li>Alimentación por cable USB</li>
-              <li>Sin conectividad inalámbrica</li>
-              <li>Sin medición de calidad del aire (CO2)</li>
-              <li>Prototipo experimental</li>
-            </ul>
-          </div>
-
-          <div class="evo-arrow">→</div>
-
-          <div class="evo-card evo-card--new">
-            <span class="evo-tag evo-tag--new">Versión 2 · AirSense actual</span>
-            <h3>AirSense AI</h3>
-            <ul class="evo-list">
-              <li>ESP32 con WiFi y Bluetooth</li>
-              <li>Pantalla OLED de alta resolución</li>
-              <li>Sensor SHT30 de mayor precisión</li>
-              <li>Sensor MQ135 para calidad del aire (CO2)</li>
-              <li>Micrófono MAX4466</li>
-              <li>Batería recargable 18650</li>
-              <li>Carcasa diseñada e impresa en 3D</li>
-              <li>Dashboard en tiempo real</li>
-              <li>Agente de Inteligencia Artificial</li>
-              <li>Reportes automáticos</li>
-              <li>Alertas por Gmail y WhatsApp</li>
-            </ul>
-          </div>
-        </div>
-
-        <h3 class="evo-subhead">Principales mejoras</h3>
-        <div class="evo-features">
-          <div class="evo-feature">
-            <span class="evo-feature-icon">🌡️</span>
-            <span class="evo-feature-text">Mayor precisión en temperatura y humedad</span>
-          </div>
-          <div class="evo-feature">
-            <span class="evo-feature-icon">🫁</span>
-            <span class="evo-feature-text">Incorporación del monitoreo de calidad del aire (CO2)</span>
-          </div>
-          <div class="evo-feature">
-            <span class="evo-feature-icon">📶</span>
-            <span class="evo-feature-text">Conectividad WiFi</span>
-          </div>
-          <div class="evo-feature">
-            <span class="evo-feature-icon">🔋</span>
-            <span class="evo-feature-text">Funcionamiento portátil con batería</span>
-          </div>
-          <div class="evo-feature">
-            <span class="evo-feature-icon">📊</span>
-            <span class="evo-feature-text">Dashboard en tiempo real</span>
-          </div>
-          <div class="evo-feature">
-            <span class="evo-feature-icon">🧠</span>
-            <span class="evo-feature-text">Inteligencia Artificial que analiza las mediciones</span>
-          </div>
-          <div class="evo-feature">
-            <span class="evo-feature-icon">📧</span>
-            <span class="evo-feature-text">Reportes automáticos por Gmail</span>
-          </div>
-          <div class="evo-feature">
-            <span class="evo-feature-icon">💬</span>
-            <span class="evo-feature-text">Alertas inteligentes por WhatsApp</span>
-          </div>
-          <div class="evo-feature">
-            <span class="evo-feature-icon">🖥️</span>
-            <span class="evo-feature-text">Nueva interfaz OLED</span>
-          </div>
-          <div class="evo-feature">
-            <span class="evo-feature-icon">🖨️</span>
-            <span class="evo-feature-text">Carcasa impresa en 3D</span>
-          </div>
-        </div>
-
-        <h3 class="evo-subhead">Comparación de componentes</h3>
-        <div class="spec-table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Componente / Función</th>
-                <th>Versión anterior</th>
-                <th>Versión actualizada</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Pantalla / interfaz visual</td>
-                <td class="spec-old">LCD 16x2 con módulo I2C (solo texto)</td>
-                <td class="spec-new">OLED 1.3" 128x64 I2C SH1106 (mayor resolución, íconos y más datos)</td>
-              </tr>
-              <tr>
-                <td>Sensor de temperatura y humedad</td>
-                <td class="spec-old">DHT11 (±2°C / ±5% HR, lectura cada 2 s)</td>
-                <td class="spec-new">SHT30 I2C (±0.3°C / ±3% HR, lectura más rápida y estable)</td>
-              </tr>
-              <tr>
-                <td>Detección de ruido / sonido</td>
-                <td class="spec-old">KY-038 (salida analógica, calibración manual poco confiable)</td>
-                <td class="spec-new">Micrófono electret MAX4466 (señal más limpia, ganancia ajustable)</td>
-              </tr>
-              <tr>
-                <td>Calidad del aire</td>
-                <td class="spec-old">No existía esta variable</td>
-                <td class="spec-new">Sensor de gas MQ135 (NH3, NOx, CO2, alcohol, benceno y humo)</td>
-              </tr>
-              <tr>
-                <td>Conectividad y procesamiento</td>
-                <td class="spec-old">Arduino UNO (sin internet, solo cable USB)</td>
-                <td class="spec-new">NodeMCU ESP32 (WiFi + Bluetooth 4.2, IoT y envío remoto)</td>
-              </tr>
-              <tr>
-                <td>Alimentación / autonomía</td>
-                <td class="spec-old">Cable USB fijo, sin batería</td>
-                <td class="spec-new">TP4056 + Step Up Boost con batería 18650 (portátil y recargable)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══ INTELIGENCIA ARTIFICIAL ══ -->
-    <section class="home-section ai-section" id="ai">
-      <div class="home-container">
-        <span class="section-eyebrow">Novedad 2026 · Agente Inteligente</span>
-        <h2 class="section-title">AirSense ahora <span>interpreta</span> lo que mide</h2>
-        <p class="section-desc">
-          Más allá de sensar, la nueva versión incorpora un agente de Inteligencia Artificial
-          que analiza en tiempo real las variables ambientales, redacta reportes automáticos
-          y avisa apenas detecta una condición fuera de los valores saludables, sin necesidad
-          de que alguien esté mirando el dashboard.
-        </p>
-
-        <div class="ai-grid">
-          <div class="ai-card">
-            <span class="ai-icon">🤖</span>
-            <h3>Agente de Inteligencia Artificial</h3>
-            <p>Analiza continuamente temperatura, humedad, ruido y calidad del aire, comparándolas con los valores de referencia investigados (OMS, ASHRAE, Resolución 295/03 SRT) para determinar si el ambiente es saludable.</p>
-          </div>
-          <div class="ai-card">
-            <span class="ai-icon">📡</span>
-            <h3>Dashboard en tiempo real</h3>
-            <p>Recibe los datos del ESP32 por WiFi y los muestra en vivo, sin depender de un cable serial ni de una computadora conectada todo el tiempo.</p>
-          </div>
-          <div class="ai-card">
-            <span class="ai-icon">📧</span>
-            <h3>Reportes automáticos por Gmail</h3>
-            <p>El sistema arma y envía informes periódicos con el estado del ambiente monitoreado directamente a la casilla de correo configurada.</p>
-          </div>
-          <div class="ai-card">
-            <span class="ai-icon">💬</span>
-            <h3>Alertas inteligentes por WhatsApp</h3>
-            <p>Ante una condición fuera de rango, la IA dispara una alerta instantánea por WhatsApp para poder actuar a tiempo.</p>
-          </div>
-        </div>
-
-        <p class="ai-footnote">
-          Estas funciones se apoyan en la conectividad WiFi y Bluetooth del ESP32, que
-          reemplazó al Arduino UNO como unidad central y permitió pensar el dashboard como
-          una aplicación conectada, ya no como un simple gráfico alimentado por cable serial.
-        </p>
-      </div>
-    </section>
-
-    <!-- ── CÓMO FUNCIONA ── -->
-    <section class="home-section how-section">
-      <div class="home-container">
-
-        <span class="section-eyebrow">Tecnología</span>
-
-        <h2 class="section-title">Cómo funciona ahora</h2>
-
-        <p class="section-desc">
-          AirSense combina sensores de mayor precisión con conectividad WiFi y un agente de
-          Inteligencia Artificial que transforma cada lectura en información útil, en segundos.
-        </p>
-
-        <div class="steps-grid">
-
-          <!-- PASO 1 -->
-          <div class="step-card">
-            <div class="step-num">01</div>
-            <img
-              src="{% static 'src/Fotos/Dispositivo.png' %}"
-              alt="Sensores AirSense midiendo"
-              class="step-photo"
-            >
-            <h3>Los sensores miden</h3>
-            <p>
-              El SHT30 mide temperatura y humedad con mayor precisión, el MQ135 analiza la
-              calidad del aire y el micrófono MAX4466 capta el nivel de ruido, todo visible
-              en la pantalla OLED del dispositivo.
-            </p>
-          </div>
-
-          <div class="step-connector">→</div>
-
-          <!-- PASO 2 -->
-          <div class="step-card">
-            <div class="step-num">02</div>
-            <img
-              src="{% static 'src/Fotos/ESP32.png' %}"
-              alt="ESP32 transmitiendo por WiFi"
-              class="step-photo"
-            >
-            <h3>El ESP32 transmite</h3>
-            <p>
-              Los datos viajan por WiFi hacia el dashboard en tiempo real, sin cables ni
-              depender de una computadora conectada.
-            </p>
-          </div>
-
-          <div class="step-connector">→</div>
-
-          <!-- PASO 3 -->
-          <div class="step-card">
-            <div class="step-num">03</div>
-            <img
-              src="{% static 'src/Fotos/AgenteIA.png' %}"
-              alt="Agente de Inteligencia Artificial analizando datos"
-              class="step-photo"
-            >
-            <h3>La IA interpreta</h3>
-            <p>
-              El agente de Inteligencia Artificial compara cada medición con los valores
-              saludables investigados y detecta automáticamente si hay una condición de riesgo.
-            </p>
-          </div>
-
-          <div class="step-connector">→</div>
-
-          <!-- PASO 4 -->
-          <div class="step-card">
-            <div class="step-num">04</div>
-            <img
-              src="{% static 'src/Fotos/Alertas.png' %}"
-              alt="Alertas automáticas por Gmail y WhatsApp"
-              class="step-photo"
-            >
-            <h3>Llegan las alertas</h3>
-            <p>
-              Apenas se detecta un valor fuera de rango, AirSense envía un reporte por Gmail
-              y una alerta por WhatsApp, sin que nadie tenga que estar mirando el dashboard.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ── RESULTADOS ── -->
-    <section class="home-section results-section">
-      <div class="home-container">
-        <span class="section-eyebrow">Datos reales · E.E.S.T N°1 2026</span>
-        <h2 class="section-title">Lo que revelaron<br><span>las mediciones</span></h2>
-        <p class="section-desc">Mediciones registradas con el primer prototipo en 3 espacios de la institución durante el primer semestre de 2026. Estos datos fueron el punto de partida que motivó la actualización del sistema y la incorporación de Inteligencia Artificial.</p>
-
-        <div class="results-grid">
-          <div class="result-card result-card--alert">
-            <div class="result-location">🧑‍🏫 Aula del curso</div>
-            <div class="result-rows">
-              <div class="result-row">
-                <span class="result-date">12/05</span>
-                <span class="result-values">29.3°C · 45% · 68dB</span>
-                <span class="result-badge result-badge--alert">ALERTA</span>
-              </div>
-              <div class="result-row">
-                <span class="result-date">13/05</span>
-                <span class="result-values">27.8°C · 48% · 62dB</span>
-                <span class="result-badge result-badge--alert">ALERTA</span>
-              </div>
-              <div class="result-row">
-                <span class="result-date">14/05</span>
-                <span class="result-values">25.1°C · 52% · 57dB</span>
-                <span class="result-badge result-badge--warn">LEVE</span>
-              </div>
-              <div class="result-row">
-                <span class="result-date">19/05</span>
-                <span class="result-values">30.2°C · 43% · 71dB</span>
-                <span class="result-badge result-badge--alert">ALERTA</span>
-              </div>
-              <div class="result-row">
-                <span class="result-date">20/05</span>
-                <span class="result-values">24.9°C · 56% · 53dB</span>
-                <span class="result-badge result-badge--ok">OK</span>
-              </div>
-            </div>
-          </div>
-          <div class="result-card result-card--alert">
-            <div class="result-location">🏫 Patio en Recreo</div>
-            <div class="result-rows">
-              <div class="result-row">
-                <span class="result-date">12/05</span>
-                <span class="result-values">31.5°C · 38% · 75dB</span>
-                <span class="result-badge result-badge--alert">ALERTA</span>
-              </div>
-              <div class="result-row">
-                <span class="result-date">14/05</span>
-                <span class="result-values">26.8°C · 42% · 70dB</span>
-                <span class="result-badge result-badge--alert">ALERTA</span>
-              </div>
-              <div class="result-row">
-                <span class="result-date">20/05</span>
-                <span class="result-values">25.0°C · 55% · 68dB</span>
-                <span class="result-badge result-badge--alert">ALERTA</span>
-              </div>
-            </div>
-          </div>
-          <div class="result-card result-card--ok">
-            <div class="result-location">💻 Laboratorio</div>
-            <div class="result-rows">
-              <div class="result-row">
-                <span class="result-date">13/05</span>
-                <span class="result-values">22.3°C · 50% · 48dB</span>
-                <span class="result-badge result-badge--ok">OK</span>
-              </div>
-              <div class="result-row">
-                <span class="result-date">19/05</span>
-                <span class="result-values">23.1°C · 52% · 51dB</span>
-                <span class="result-badge result-badge--ok">OK</span>
-              </div>
-              <div class="result-row">
-                <span class="result-date">20/05</span>
-                <span class="result-values">21.8°C · 49% · 45dB</span>
-                <span class="result-badge result-badge--ok">OK</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="param-summary">
-          <div class="param-bar">
-            <div class="param-name">🌡️ Temperatura</div>
-            <div class="param-track"><div class="param-fill param-fill--alert" style="width:54.5%"></div></div>
-            <div class="param-pct">54.5% fuera de rango</div>
-          </div>
-          <div class="param-bar">
-            <div class="param-name">💧 Humedad</div>
-            <div class="param-track"><div class="param-fill param-fill--ok" style="width:9.1%"></div></div>
-            <div class="param-pct">9.1% fuera de rango</div>
-          </div>
-          <div class="param-bar">
-            <div class="param-name">🔊 Ruido</div>
-            <div class="param-track"><div class="param-fill param-fill--danger" style="width:72.7%"></div></div>
-            <div class="param-pct">72.7% fuera de rango</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ── HARDWARE ── -->
     <section class="home-section hardware-section">
       <div class="home-container">
@@ -631,8 +592,8 @@
 
           <div class="hw-card hw-card-featured">
             <img
-              src="{% static 'src/Fotos/Dispositivo.png' %}"
-              alt="Dispositivo AirSense actualizado"
+              src="{% static 'src/Fotos/HeroAI.png' %}"
+              alt="Dispositivo AirSense AI"
               class="hw-img hw-img-featured"
             >
             <div class="hw-tag">AirSense AI</div>
@@ -721,7 +682,7 @@
           <!-- Batería -->
           <div class="hw-card">
             <img
-              src="{% static 'src/Fotos/Bateria18650.png' %}"
+              src="{% static 'src/Fotos/TP4056.png' %}"
               alt="Batería 18650 con módulo TP4056"
               class="hw-img"
             >
@@ -1215,7 +1176,79 @@
         track.addEventListener("mouseleave", startAuto);
         startAuto();
       }
+
+      const evoTrack = document.getElementById("evoTrack");
+      const evoPrevBtn = document.getElementById("evoPrev");
+      const evoNextBtn = document.getElementById("evoNext");
+      if (evoTrack && evoPrevBtn && evoNextBtn) {
+        evoTrack.innerHTML = evoTrack.innerHTML + evoTrack.innerHTML;
+        const evoStep = () => {
+          const card = evoTrack.querySelector(".evo-feature");
+          return (card ? card.offsetWidth : 160) + 18;
+        };
+        const evoCardCount = () => Math.floor(evoTrack.querySelectorAll(".evo-feature").length / 2);
+        const evoSlide = (i, animated) => {
+          evoTrack.style.transition = animated ? "transform 0.8s cubic-bezier(0.33, 1, 0.68, 1)" : "none";
+          evoTrack.style.transform = "translateX(" + (-i * evoStep()) + "px)";
+        };
+        const evoGoNext = () => {
+          let count = evoCardCount();
+          if (!count) return;
+          evoIndex = evoIndex + 1;
+          if (evoIndex >= count) { evoIndex = 0; evoSlide(evoIndex, false); }
+          else { evoSlide(evoIndex, true); }
+        };
+        const evoGoPrev = () => {
+          let count = evoCardCount();
+          if (!count) return;
+          evoIndex = evoIndex - 1;
+          if (evoIndex < 0) { evoIndex = count - 1; evoSlide(evoIndex, false); }
+          else { evoSlide(evoIndex, true); }
+        };
+        let evoIndex = 0;
+        evoPrevBtn.addEventListener("click", () => { evoGoPrev(); evoRestartAuto(); });
+        evoNextBtn.addEventListener("click", () => { evoGoNext(); evoRestartAuto(); });
+
+        let evoAutoTimer = null;
+        const evoStopAuto = () => clearInterval(evoAutoTimer);
+        const evoStartAuto = () => {
+          evoStopAuto();
+          evoAutoTimer = setInterval(evoGoNext, 6000);
+        };
+        const evoRestartAuto = () => evoStartAuto();
+        evoTrack.addEventListener("mouseenter", evoStopAuto);
+        evoTrack.addEventListener("mouseleave", evoStartAuto);
+        evoStartAuto();
+      }
     });
+  </script>
+
+  <script>
+    (function () {
+      var evo = document.querySelector('.evolution-section');
+      if (!evo) return;
+      var started = false;
+      function reveal() {
+        if (started) return;
+        started = true;
+        evo.classList.add('in-view');
+      }
+      function inView() {
+        var r = evo.getBoundingClientRect();
+        return r.top < window.innerHeight && r.bottom > 0;
+      }
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { reveal(); io.disconnect(); }
+          });
+        }, { threshold: 0.12 });
+        io.observe(evo);
+        setTimeout(function () { if (inView()) reveal(); }, 800);
+      } else {
+        reveal();
+      }
+    })();
   </script>
 
   <script>
