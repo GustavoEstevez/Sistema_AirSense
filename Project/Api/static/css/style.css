@@ -30,10 +30,17 @@ body.page-ai {
 
 body.page-ai .problem-section,
 body.page-ai .how-section,
-body.page-ai .results-section,
+body.page-ai .results-section {
+  background: var(--c-ice);
+}
+
 body.page-ai .hardware-section,
 body.page-ai .team-section {
-  background: var(--c-ice);
+  background:
+    linear-gradient(rgba(8, 131, 149, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(8, 131, 149, 0.05) 1px, transparent 1px),
+    var(--c-ice);
+  background-size: 34px 34px, 34px 34px, auto;
 }
 
 body.page-ai .problem-section .section-title { color: var(--c-navy); }
