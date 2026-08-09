@@ -199,3 +199,49 @@ img, svg { display: block; max-width: 100%; }
   .section { padding: 56px 0; }
   .metrics-grid { grid-template-columns: 1fr; }
 }
+
+/* ════════════════════════════════════════════════════════════════
+   MODO OSCURO — dashboard
+==================================================================== */
+:root[data-theme="dark"] {
+  --bg:            #0d1518;
+  --text:          #E8F3F5;
+  --text-muted:    #9DC7CF;
+  --border:        rgba(46,196,219,0.16);
+  --gradient-card: linear-gradient(180deg, #16222a 0%, #131f26 100%);
+}
+
+[data-theme="dark"] .section-alt { background: #111c22; border-top-color: rgba(46,196,219,0.15); }
+[data-theme="dark"] .card { box-shadow: 0 8px 24px -8px rgba(0,0,0,.5); }
+
+[data-theme="dark"] .section-header h2,
+[data-theme="dark"] .metric-label,
+[data-theme="dark"] .metric-value,
+[data-theme="dark"] .status-title,
+[data-theme="dark"] .recs-head h3,
+[data-theme="dark"] .chart-card h3 { color: #E8F3F5; }
+
+[data-theme="dark"] .status-card {
+  background: linear-gradient(140deg, rgba(16,185,129,0.14) 0%, #16222a 60%);
+  border-color: rgba(16,185,129,0.3);
+}
+[data-theme="dark"] .status-card[data-state="warning"] {
+  background: linear-gradient(140deg, rgba(245,158,11,0.14) 0%, #16222a 60%);
+  border-color: rgba(245,158,11,0.3);
+}
+[data-theme="dark"] .status-card[data-state="danger"] {
+  background: linear-gradient(140deg, rgba(239,68,68,0.14) 0%, #16222a 60%);
+  border-color: rgba(239,68,68,0.3);
+}
+
+[data-theme="dark"] .status-pill { color: #34d399; }
+[data-theme="dark"] .status-pill[data-state="warning"] { color: #fbbf24; }
+[data-theme="dark"] .status-pill[data-state="danger"]  { color: #f87171; }
+
+[data-theme="dark"] .rec { background: #16222a; color: #9DC7CF; border-color: rgba(46,196,219,0.16); }
+[data-theme="dark"] .rec-warn {
+  background: rgba(245,158,11,0.12); color: #fbbf24; border-color: rgba(245,158,11,0.25);
+}
+[data-theme="dark"] .rec-danger {
+  background: rgba(239,68,68,0.12); color: #f87171; border-color: rgba(239,68,68,0.25);
+}
