@@ -78,10 +78,11 @@ img, svg { display: block; max-width: 100%; }
 .card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: #cfe9f3; }
 
 /* ── Métricas ── */
-.metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(205px, 1fr)); gap: 22px; }
 
 .metric-card { display: flex; flex-direction: column; gap: 18px; }
-.metric-head { display: flex; align-items: center; gap: 14px; }
+.metric-head { display: flex; align-items: flex-start; gap: 14px; height: 78px; }
+.metric-head > div { min-width: 0; }
 
 .metric-icon {
   width: 48px; height: 48px; border-radius: 14px;
@@ -94,16 +95,27 @@ img, svg { display: block; max-width: 100%; }
 .icon-temp  { background: linear-gradient(135deg, #fb7185, #f43f5e); box-shadow: 0 10px 22px -10px rgba(244,63,94,.55); }
 .icon-hum   { background: linear-gradient(135deg, #38bdf8, #0ea5e9); box-shadow: 0 10px 22px -10px rgba(14,165,233,.55); }
 .icon-noise { background: linear-gradient(135deg, #a78bfa, #7c3aed); box-shadow: 0 10px 22px -10px rgba(124,58,237,.55); }
+.icon-co2   { background: linear-gradient(135deg, #34d399, #10b981); box-shadow: 0 10px 22px -10px rgba(16,185,129,.55); }
 
-.metric-label { margin: 0; font-size: 1rem; color: var(--navy-900); font-weight: 600; font-family: var(--font-display); }
-.metric-sub   { margin: 2px 0 0; font-size: .8rem; color: var(--text-muted); }
-.metric-body  { display: flex; align-items: baseline; gap: 6px; }
+.metric-label { margin: 0; font-size: 1rem; color: var(--navy-900); font-weight: 600; font-family: var(--font-display); line-height: 1.25; }
+.metric-sub   { margin: 2px 0 0; font-size: .8rem; color: var(--text-muted); line-height: 1.35; overflow-wrap: break-word; }
+.metric-body  { display: flex; align-items: baseline; gap: 6px; margin-top: auto; margin-bottom: auto; }
 .metric-value {
   font-family: var(--font-display);
   font-size: clamp(2.4rem, 4vw, 3rem);
   font-weight: 700; color: var(--navy-900); line-height: 1;
 }
 .metric-unit { font-size: 1.1rem; color: var(--text-muted); font-weight: 600; }
+.metric-trend {
+  margin-left: auto;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
+.metric-trend.trend-up   { color: #f59e0b; }
+.metric-trend.trend-down { color: #10b981; }
+.metric-trend.trend-flat { color: var(--text-muted); }
 
 /* ── Status pill ── */
 .status-pill {
@@ -176,9 +188,28 @@ img, svg { display: block; max-width: 100%; }
 .rec-danger { background: #fef2f2; border-color: rgba(239,68,68,.3);  color: #7f1d1d; }
 
 /* ── Gráficos ── */
-.charts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 22px; }
 .chart-card h3 { margin: 0 0 12px; font-family: var(--font-display); font-size: 1.05rem; color: var(--navy-900); }
 .chart-wrap { position: relative; height: 220px; }
+
+/* ── Leyenda de rangos OMS/ASHRAE ── */
+.charts-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 24px;
+  font-size: .82rem;
+  color: var(--text-muted);
+}
+.legend-item { display: inline-flex; align-items: center; gap: 8px; }
+.legend-line {
+  width: 24px;
+  height: 0;
+  border-top: 2px dashed;
+}
+.legend-line--ok   { border-color: #10b981; }
+.legend-line--warn { border-color: #f59e0b; }
 
 /* ── Indicador de conexión ── */
 .conn-status {
@@ -212,6 +243,16 @@ img, svg { display: block; max-width: 100%; }
 @media (max-width: 640px) {
   .section { padding: 56px 0; }
   .metrics-grid { grid-template-columns: 1fr; }
+  .card { padding: 20px; }
+  .section-header { margin-bottom: 32px; }
+  .charts-legend { gap: 12px 18px; }
+}
+@media (max-width: 480px) {
+  .conn-status { display: none; }
+  .metric-value { font-size: clamp(2rem, 9vw, 2.5rem); }
+  .chart-wrap { height: 180px; }
+  .charts-legend { font-size: .75rem; }
+  .metric-head { height: 72px; }
 }
 
 /* ════════════════════════════════════════════════════════════════

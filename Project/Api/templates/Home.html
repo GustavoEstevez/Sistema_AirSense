@@ -28,6 +28,25 @@
       }
     })();
   </script>
+  <script>
+    (function () {
+      var btn = document.getElementById('navToggle');
+      var nav = document.getElementById('siteNav');
+      var header = document.querySelector('header');
+      if (!btn || !nav || !header) return;
+      btn.addEventListener('click', function () {
+        var open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!open));
+        header.classList.toggle('nav-open', !open);
+      });
+      nav.addEventListener('click', function (e) {
+        if (e.target.closest('a')) {
+          btn.setAttribute('aria-expanded', 'false');
+          header.classList.remove('nav-open');
+        }
+      });
+    })();
+  </script>
   <link rel="icon" href="{% static 'src/FaviconAirSense.png' %}" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
@@ -44,7 +63,7 @@
         <span class="logo-sub">Monitoreo ambiental inteligente.</span>
       </span>
     </a>
-    <nav>
+    <nav id="siteNav">
       <a href="{% url 'HomeAI' %}" class="nav-link {% if request.resolver_match.url_name == 'HomeAI' %}active{% endif %}"><span class="nav-badge">Nuevo</span><span class="nav-badge-text">AirSense AI</span></a>
       <a href="{% url 'Home' %}" class="nav-link {% if request.resolver_match.url_name == 'Home' %}active{% endif %}">AirSense Classic</a>
       <a href="{% url 'dashboard:home' %}" class="nav-link {% if request.resolver_match.namespace == 'dashboard' %}active{% endif %}">Dashboard</a>
@@ -53,12 +72,17 @@
     <div class="header-actions">
       <a href="{% url 'dashboard:home' %}" class="btn-live">
         <span class="live-dot"></span>
-        Ver en vivo
+        <span class="btn-live-label">Ver en vivo</span>
       </a>
       <button type="button" class="theme-toggle" id="themeToggle" role="switch" aria-label="Cambiar a modo oscuro o claro" title="Cambiar tema">
         <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5 5l1.6 1.6M17.4 17.4 19 19M19 5l-1.6 1.6M6.6 17.4 5 19"/></svg>
         <span class="theme-switch-thumb" aria-hidden="true"></span>
         <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Abrir o cerrar menú">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
       </button>
     </div>
   </header>
@@ -570,6 +594,8 @@
       }
     });
   </script>
+
+  <script src="{% static 'js/connection.js' %}"></script>
 
 </body>
 </html>
